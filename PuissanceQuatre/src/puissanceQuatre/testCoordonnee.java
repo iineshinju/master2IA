@@ -28,7 +28,16 @@ public class testCoordonnee {
 		}
 		return false;
 	}
-
+	
+	public boolean testCoordonneeNotInRange() {
+		try {
+			Coordonnee c = new Coordonnee(7, 6);
+		} catch (IllegalArgumentException)){
+			return true; //Si on a bien attrapé l'exception alors c'est vrai
+		}
+		return false;
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
