@@ -20,6 +20,10 @@ public class Jeton {
 		public Coordonnee getPlace() {
 			return this.place;
 		}
+		
+		public boolean getCouleur() {
+			return this.couleur;
+		}
 	}
 
 	public static void main(String[] args) {
