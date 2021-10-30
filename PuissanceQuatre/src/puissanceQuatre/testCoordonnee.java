@@ -29,6 +29,15 @@ public class testCoordonnee {
 		return false;
 	}
 	
+	public boolean testCoordonneeInRange() {
+		try {
+			Coordonnee c = new Coordonnee(1, 1);
+		} catch (IllegalArgumentException)){
+			return false; //Si on a bien attrapé l'exception alors c'est vrai
+		}
+		return true;
+	}
+	
 	public boolean testCoordonneeNotInRange() {
 		try {
 			Coordonnee c = new Coordonnee(7, 6);
