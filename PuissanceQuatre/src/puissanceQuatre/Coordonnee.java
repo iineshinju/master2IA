@@ -59,7 +59,11 @@ public class Coordonnee implements Comparable<Coordonnee> {
 		return false;
 	}
 	public int compareTo(Coordonnee o) {
-		return 0;
+		if(ligne==o.getLigne() && colonne==o.getColonne())
+			return 0;
+		else if (ligne<o.getLigne() || (ligne==o.getLigne() && colonne < o.getColonne()))
+			return -1;
+		return 1;
 	}
 
 	public static void main(String[] args) {
