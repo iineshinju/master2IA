@@ -46,6 +46,13 @@ public class Coordonnee implements Comparable<Coordonnee> {
 	}
 	
 	public boolean equals(Object obj) {
+		 Coordonnee c = new Coordonnee(0,0);
+		if(obj instanceof Coordonnee) {
+			c = (Coordonnee) obj;
+			if(this.compareTo(c)==0)
+				return true; 
+			return false;
+		}
 		return false;
 	}
 	
