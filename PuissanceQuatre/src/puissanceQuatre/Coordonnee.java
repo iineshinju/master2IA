@@ -32,7 +32,9 @@ public class Coordonnee implements Comparable<Coordonnee> {
 	}
 
 	public String toString() {
-		return "";
+		int int_lettre = colonne + 65;
+		char lettre = (char) int_lettre;
+		return "" + lettre + (ligne + 1);
 	}
 	
 	public int getLigne() {
@@ -61,6 +63,7 @@ public class Coordonnee implements Comparable<Coordonnee> {
 		Coordonnee c = new Coordonnee(2,4);
 		System.out.println(c.getLigne());
 		System.out.println(c.getColonne());
+		System.out.println(c.toString());
 	}
 
 }
