@@ -36,11 +36,11 @@ public class Coordonnee implements Comparable<Coordonnee> {
 	}
 	
 	public int getLigne() {
-		return 0;
+		return this.ligne;
 	}
 	
 	public int getColonne() {
-		return 0;
+		return this.colonne;
 	}
 	
 	public boolean equals(Object obj) {
@@ -56,7 +56,11 @@ public class Coordonnee implements Comparable<Coordonnee> {
 
 	public static void main(String[] args) {
 		//Coordonnee c = new Coordonnee(6,6);
-		Coordonnee c = new Coordonnee();
+		//Coordonnee c = new Coordonnee();
+		//Coordonnee c = new Coordonnee(""J2);
+		Coordonnee c = new Coordonnee(2,4);
+		System.out.println(c.getLigne());
+		System.out.println(c.getColonne());
 	}
 
 }
