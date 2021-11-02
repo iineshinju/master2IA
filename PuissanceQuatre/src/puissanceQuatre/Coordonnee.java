@@ -56,6 +56,14 @@ public class Coordonnee implements Comparable<Coordonnee> {
 	}
 	
 	public boolean voisine(Coordonnee c) {
+		if((ligne==c.getLigne() && colonne==c.getColonne()+1)||(ligne==c.getLigne() && colonne==c.getColonne()-1))
+			return true;
+		else if((colonne==c.getColonne() && ligne==c.getLigne()+1)||(colonne==c.getColonne() && ligne==c.getLigne()-1))
+			return true;
+		else if((colonne==c.getColonne()+1 && ligne==c.getLigne()+1)||(colonne==c.getColonne()-1 && ligne==c.getLigne()-1))
+			return true;
+		else if((colonne==c.getColonne()+1 && ligne==c.getLigne()-1)||(colonne==c.getColonne()-1 && ligne==c.getLigne()+1))
+			return true;
 		return false;
 	}
 	public int compareTo(Coordonnee o) {
@@ -70,10 +78,13 @@ public class Coordonnee implements Comparable<Coordonnee> {
 		//Coordonnee c = new Coordonnee(6,6);
 		//Coordonnee c = new Coordonnee();
 		//Coordonnee c = new Coordonnee(""J2);
-		Coordonnee c = new Coordonnee(2,4);
-		System.out.println(c.getLigne());
-		System.out.println(c.getColonne());
-		System.out.println(c.toString());
+		Coordonnee c1 = new Coordonnee(3,4);
+		System.out.println(c1.getLigne());
+		System.out.println(c1.getColonne());
+		System.out.println(c1.toString());
+		Coordonnee c2 = new Coordonnee(2,6);
+		System.out.println(c1.compareTo(c2));
+		System.out.println(c1.voisine(c2));
 	}
 
 }
