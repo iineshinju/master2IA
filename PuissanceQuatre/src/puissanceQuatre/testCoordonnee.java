@@ -116,6 +116,12 @@ public class testCoordonnee {
 		return c.voisine(d);
 	}
 	
+	public boolean testVoisineGauche() {
+		Coordonnee c = new Coordonnee("C3");
+		Coordonnee d = new Coordonnee("B3");
+		return c.voisine(d);
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
