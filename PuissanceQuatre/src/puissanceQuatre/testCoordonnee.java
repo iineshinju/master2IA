@@ -157,7 +157,12 @@ public class testCoordonnee {
 		Coordonnee d = new Coordonnee("F4");
 		return c.voisine(d);
 	}
-	
+
+	public boolean testToStringChiffre() {
+		Coordonee c = new Coordonnee(0,0);
+		return "A1" == c.toString(); 
+	}
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
