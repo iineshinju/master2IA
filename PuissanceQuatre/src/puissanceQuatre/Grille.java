@@ -25,7 +25,7 @@ public class Grille {
 		return sb.toString();
 	}
 	
-	public boolean ajouteJeton(Jeton jeton, int colonne) {
+	public boolean ajouteJeton(int colonne) { 
 		if (colonne < 0 || colonne > 6)
 			throw new IllegalArgumentException("les colonnes sont de 0 a 6");
 		int i = 5;
@@ -34,7 +34,7 @@ public class Grille {
 		}
 		if(i<0)
 			return false;
-		jetons[i][colonne] = jeton;
+		jetons[i][colonne] = new Jeton(new Coordonnee(i,colonne));
 		return true;
 	}
 	
