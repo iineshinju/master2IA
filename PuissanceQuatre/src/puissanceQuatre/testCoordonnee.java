@@ -110,6 +110,12 @@ public class testCoordonnee {
 		return c.voisine(d);
 	}
 	
+	public boolean testVoisineHautGauche() {
+		Coordonnee c = new Coordonnee("C3");
+		Coordonnee d = new Coordonnee("B2");
+		return c.voisine(d);
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
