@@ -47,6 +47,15 @@ public class testCoordonnee {
 		return false;
 	}
 	
+	public static boolean testCoordonneeStringIncorrect() {
+		try {
+			Coordonnee c = new Coordonnee("H7");
+		} catch (IllegalArgumentException e){
+			return true; //Si on a bien attrapé l'exception alors c'est vrai
+		}
+		return false;
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 	}
