@@ -13,8 +13,8 @@ public class testCoordonnee {
 	
 	public boolean testCoordonneeNotInRangeColonne() {
 		try {
-			Coordonnee c = new Coordonnee(7, 1); // 7 est la 8e lettre de l'alphabet soit H, il ne fait pas partie de la grille
-		} catch (IllegalArgumentException)){
+			Coordonnee c = new Coordonnee(1, 7); // 7 est la 8e lettre de l'alphabet soit H, il ne fait pas partie de la grille
+		} catch (IllegalArgumentException e)){
 			return true; //Si on a bien attrapé l'exception alors c'est vrai
 		}
 		return false;
