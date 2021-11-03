@@ -55,6 +55,15 @@ public class testCoordonnee {
 		}
 		return false;
 	}
+
+	public static boolean testCoordonneeStringCorrect() {
+		try {
+			Coordonnee c = new Coordonnee("A1");
+		} catch (IllegalArgumentException e){
+			return false; 
+		}
+		return true;
+	}
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
