@@ -18,6 +18,10 @@ public class Jeton {
 		return this.place;
 	}
 	
+	public boolean getCouleur() {
+		return this.couleur;
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
