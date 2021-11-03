@@ -91,6 +91,13 @@ public class testCoordonnee {
 		return compare == 1;
 	}
 	
+	public boolean testCompareToColonne() {
+		Coordonnee c = new Coordonnee(1,1);
+		Coordonnee d = new Coordonnee(2,0);
+		compare = c.compareTo(d);
+		return compare == -1;
+	}
+	
 	public boolean testEquals() {
 		Coordonnee c = new Coordonnee(0,0);
 		Coordonnee d = new Coordonnee(0,0);
