@@ -71,6 +71,12 @@ public class testCoordonnee {
 		return ligne == 0;
 	}
 	
+	public static boolean testGetColonne() {
+		Coordonnee c = new Coordonnee("A1");
+		int colonne = c.getColonne();
+		return colonne == 0;
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 	}
