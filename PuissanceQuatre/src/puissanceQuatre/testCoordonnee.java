@@ -40,8 +40,8 @@ public class testCoordonnee {
 	
 	public boolean testCoordonneeNotInRange() {
 		try {
-			Coordonnee c = new Coordonnee(7, 6);
-		} catch (IllegalArgumentException)){
+			Coordonnee c = new Coordonnee(6, 7);
+		} catch (IllegalArgumentException e)){
 			return true; //Si on a bien attrapé l'exception alors c'est vrai
 		}
 		return false;
