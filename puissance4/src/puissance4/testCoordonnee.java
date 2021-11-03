@@ -65,6 +65,12 @@ public class testCoordonnee {
 		return true;
 	}
 	
+	public static boolean testGetLigne() {
+		Coordonnee c = new Coordonnee("A1");
+		int ligne = c.getLigne();
+		return ligne == 0;
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 	}
