@@ -32,7 +32,7 @@ public class testCoordonnee {
 	public boolean testCoordonneeInRange() {
 		try {
 			Coordonnee c = new Coordonnee(1, 1);
-		} catch (IllegalArgumentException)){
+		} catch (IllegalArgumentException e)){
 			return false; //Si on a bien attrapé l'exception alors c'est vrai
 		}
 		return true;
