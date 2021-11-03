@@ -116,6 +116,12 @@ public class testCoordonnee {
 		return c.voisine(d);
 	}
 	
+	public boolean testVoisineDroit() {
+		Coordonnee c = new Coordonnee("C3");
+		Coordonnee d = new Coordonnee("D3");
+		return c.voisine(d);
+	}
+	
 	public boolean testVoisineGauche() {
 		Coordonnee c = new Coordonnee("C3");
 		Coordonnee d = new Coordonnee("B3");
