@@ -2,10 +2,10 @@ package puissanceQuatre;
 
 public class testCoordonnee {
 	
-	public boolean testLigneOrColonneNull() {
+	public boolean testCoordonneeEmpty() {
 		try {
-			Coordonnee c = new Coordonnee(null, null);
-		} catch (NullPointerException)){
+			Coordonnee c = new Coordonnee();
+		} catch (IllegalArgumentException e)){
 			return true; //Si on a bien attrapé l'exception alors c'est vrai
 		}
 		return false; //Si on n'a pas attrapé l'exception c'est que les null sont accepté
