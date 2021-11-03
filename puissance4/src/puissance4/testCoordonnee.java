@@ -104,6 +104,54 @@ public class testCoordonnee {
 		return c.equals(d);
 	}
 	
+	public static boolean testVoisineHautDroit() {
+		Coordonnee c = new Coordonnee("C3");
+		Coordonnee d = new Coordonnee("D2");
+		return c.voisine(d);
+	}
+	
+	public static boolean testVoisineHautGauche() {
+		Coordonnee c = new Coordonnee("C3");
+		Coordonnee d = new Coordonnee("B2");
+		return c.voisine(d);
+	}
+	
+	public static boolean testVoisineDroit() {
+		Coordonnee c = new Coordonnee("C3");
+		Coordonnee d = new Coordonnee("D3");
+		return c.voisine(d);
+	}
+	
+	public static boolean testVoisineGauche() {
+		Coordonnee c = new Coordonnee("C3");
+		Coordonnee d = new Coordonnee("B3");
+		return c.voisine(d);
+	}
+	
+	public static boolean testVoisineBasDroit() {
+		Coordonnee c = new Coordonnee("C3");
+		Coordonnee d = new Coordonnee("D4");
+		return c.voisine(d);
+	}
+	
+	public static boolean testVoisineBasGauche() {
+		Coordonnee c = new Coordonnee("C3");
+		Coordonnee d = new Coordonnee("B4");
+		return c.voisine(d);
+	}
+	
+	public static boolean testVoisineHaut() {
+		Coordonnee c = new Coordonnee("C3");
+		Coordonnee d = new Coordonnee("C2");
+		return c.voisine(d);
+	}
+	
+	public static boolean testVoisineBas() {
+		Coordonnee c = new Coordonnee("C3");
+		Coordonnee d = new Coordonnee("C4");
+		return c.voisine(d);
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 	}
