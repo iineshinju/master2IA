@@ -22,8 +22,8 @@ public class testCoordonnee {
 
 	public boolean testCoordonneeNotInRangeLigne() {
 		try {
-			Coordonnee c = new Coordonnee(1, 6); // 6 est la 7e ligne, elle ne fait pas partie de la grille
-		} catch (IllegalArgumentException)){
+			Coordonnee c = new Coordonnee(6, 1); // 6 est la 7e ligne, elle ne fait pas partie de la grille
+		} catch (IllegalArgumentException e)){
 			return true; //Si on a bien attrapé l'exception alors c'est vrai
 		}
 		return false;
