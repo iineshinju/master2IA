@@ -22,6 +22,10 @@ public class Jeton {
 		return this.couleur;
 	}
 	
+	public String toString() {
+		return "Les coordonnées sont : " + this.place + ". La couleur du jeton est " + (couleur ? "rouge." : "jaune."); 
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
