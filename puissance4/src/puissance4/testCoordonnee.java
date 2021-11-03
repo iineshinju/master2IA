@@ -170,6 +170,31 @@ public class testCoordonnee {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		System.out.println(testCoordonneeEmpty());
+		System.out.println(testCoordonneeEmpty());
+		System.out.println(testCoordonneeNotInRangeColonne());
+		System.out.println(testCoordonneeNotInRangeLigne());
+		System.out.println(testCoordonneeInRange());
+		System.out.println(testCoordonneeNotInRange());
+		System.out.println(testCoordonneeStringIncorrect());
+		System.out.println(testCoordonneeStringCorrect());
+		System.out.println(testGetLigne());
+		System.out.println(testGetColonne());
+		System.out.println(testCompareToEquals());
+		System.out.println(testCompareToLigne());
+		System.out.println(testCompareToColonne());
+		System.out.println(testEquals());
+		System.out.println(testVoisineHautDroit());
+		System.out.println(testVoisineHautGauche());
+		System.out.println(testVoisineDroit());
+		System.out.println(testVoisineGauche());
+		System.out.println(testVoisineBasDroit());
+		System.out.println(testVoisineBasGauche());
+		System.out.println(testVoisineHaut());
+		System.out.println(testVoisineBas());
+		System.out.println(testNonVoisine());
+		System.out.println(testToStringChiffre());
+		System.out.println(testToStringLettre());
 	}
 
 }
