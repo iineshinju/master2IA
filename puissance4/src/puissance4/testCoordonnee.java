@@ -158,6 +158,11 @@ public class testCoordonnee {
 		return c.voisine(d);
 	}
 	
+	public static boolean testToStringChiffre() {
+		Coordonnee c = new Coordonnee(0,0);
+		return "A1" == c.toString(); 
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 	}
