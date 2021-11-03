@@ -98,6 +98,12 @@ public class testCoordonnee {
 		return compare == -1;
 	}
 	
+	public static boolean testEquals() {
+		Coordonnee c = new Coordonnee(0,0);
+		Coordonnee d = new Coordonnee(0,0);
+		return c.equals(d);
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 	}
