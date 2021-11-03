@@ -128,6 +128,12 @@ public class testCoordonnee {
 		return c.voisine(d);
 	}
 	
+	public boolean testVoisineBasDroit() {
+		Coordonnee c = new Coordonnee("C3");
+		Coordonnee d = new Coordonnee("D4");
+		return c.voisine(d);
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
