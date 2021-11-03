@@ -163,6 +163,11 @@ public class testCoordonnee {
 		return "A1" == c.toString(); 
 	}
 
+	public boolean testToStringLettre() {
+		Coordonee c = new Coordonnee("A1");
+		return "A1" == c.toString(); 
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
