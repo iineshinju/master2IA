@@ -9,6 +9,11 @@ public class Jeton {
 		// La valeur par défaut du boolean est false donc la couleur par défaut est jaune
 	}
 	
+	public Jeton(Coordonnee place, boolean couleur) {
+		this.place = place;
+		this.couleur = couleur;
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
