@@ -29,6 +29,15 @@ public class testCoordonnee {
 		return false;
 	}
 	
+	public static boolean testCoordonneeInRange() {
+		try {
+			Coordonnee c = new Coordonnee(1, 1);
+		} catch (IllegalArgumentException e){
+			return false; //Si on a bien attrapé l'exception alors c'est vrai
+		}
+		return true;
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 	}
