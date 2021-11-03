@@ -84,6 +84,13 @@ public class testCoordonnee {
 		return compare == 0;
 	}
 	
+	public static boolean testCompareToLigne() {
+		Coordonnee c = new Coordonnee(1,1);
+		Coordonnee d = new Coordonnee(0,1);
+		int compare = c.compareTo(d);
+		return compare == 1;
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 	}
