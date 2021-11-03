@@ -14,6 +14,11 @@ public class testJeton {
 		return couleur == true;
 	}
 	
+	public String testToStringRouge() {
+		Jeton j = new Jeton(new Coordonnee(0,0), true);
+		return "Les coordonnées sont : A1. La couleur du jeton est rouge." == j.toString(); 
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
