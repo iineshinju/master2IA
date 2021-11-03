@@ -14,6 +14,10 @@ public class Jeton {
 		this.couleur = couleur;
 	}
 	
+	public Coordonnee getPlace() {
+		return this.place;
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
