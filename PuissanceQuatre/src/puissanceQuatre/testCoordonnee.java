@@ -77,6 +77,13 @@ public class testCoordonnee {
 		return 0;
 	}
 	
+	public boolean testCompareToEquals() {
+		Coordonnee c = new Coordonnee(1,1);
+		Coordonnee d = new Coordonnee(1,1);
+		compare = c.compareTo(d);
+		return compare == 0;
+	}
+	
 	public boolean testEquals() {
 		Coordonnee c = new Coordonnee(0,0);
 		Coordonnee d = new Coordonnee(0,0);
