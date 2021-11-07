@@ -17,6 +17,14 @@ public class JoueurTexte extends JoueurAvecGrille {
 	}
 	
 	protected void retourPlacement(Coordonnee c, int etat) {
+		if(etat == 1) 
+			System.out.println("Vous avez gagné en horizontale"+'\n');
+		 if(etat == 2) 
+			System.out.println("Vous avez gagné en verticale"+'\n');
+		 if(etat == 3) 
+			System.out.println("Vous avez gagné en diagonale"+'\n');
+		 if(etat == 4) 
+			System.out.println("Vous êtes à égalité avec votre adversaire"+'\n');
 	}
 	
 	protected void retourObservation(Coordonnee c, int etat) {
