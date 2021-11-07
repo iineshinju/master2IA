@@ -39,7 +39,11 @@ public class JoueurTexte extends JoueurAvecGrille {
 	}
 	
 	public Coordonnee choixPlacement() {
-		return null;
+		System.out.println(this.getGrille());
+		System.out.println("Entrez la coordonnée de placement");
+		String input = sc.next();
+		Coordonnee c = new Coordonnee(input);
+		return c;
 	}
 
 	public static void main(String[] args) {
