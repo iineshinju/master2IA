@@ -13,6 +13,7 @@ public class JoueurTexte extends JoueurAvecGrille {
 		}
 	
 	public JoueurTexte(boolean couleur) {
+		super(couleur);
 	}
 	
 	protected void retourPlacement(Coordonnee c, int etat) {
