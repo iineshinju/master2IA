@@ -8,10 +8,11 @@ import puissanceQuatre.JoueurAvecGrille;
 public class JoueurTexte extends JoueurAvecGrille {
 	private Scanner sc = new Scanner(System.in);
 	
-	public JoueurTexte(Grille g, String nom ) {
+	public JoueurTexte(String nom, boolean couleur) {
+		super(nom,couleur);
 		}
 	
-	public JoueurTexte(Grille g) {
+	public JoueurTexte(boolean couleur) {
 	}
 	
 	protected void retourPlacement(Coordonnee c, int etat) {
@@ -26,7 +27,6 @@ public class JoueurTexte extends JoueurAvecGrille {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-
 	}
 
 }
