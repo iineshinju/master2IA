@@ -53,7 +53,7 @@ public abstract class Joueur {
 
 	protected abstract void retourObservation(int etat);
 
-	public abstract int choixPlacement();
+	public abstract Coordonnee choixPlacement();
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
