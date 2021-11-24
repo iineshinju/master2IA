@@ -160,7 +160,7 @@ public class testCoordonnee {
 	
 	public static boolean testToStringChiffre() {
 		Coordonnee c = new Coordonnee(0,0);
-		return "A1" == c.toString(); 
+		return "A1".equals(c.toString()); 
 	}
 	
 	public static boolean testToStringLettre() {
