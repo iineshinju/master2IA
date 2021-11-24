@@ -27,8 +27,10 @@ public abstract class Joueur {
 	}
 
 	public void jouerAvec(Joueur j) {
-		// ....
-	deroulementJeu(this, j);
+		j.adversaire = this;
+		this.adversaire = j;
+		System.out.println("Le jeu peut commencer.");
+		deroulementJeu(this, j);
 	}
 
 	private static void deroulementJeu(Joueur placeur, Joueur observateur) {
@@ -46,9 +48,11 @@ public abstract class Joueur {
 			observateur = x;
 		}
 	}
-	
+
 	protected abstract void retourPlacement(int etat);
+
 	protected abstract void retourObservation(int etat);
+
 	public abstract int choixPlacement();
 
 	public static void main(String[] args) {
