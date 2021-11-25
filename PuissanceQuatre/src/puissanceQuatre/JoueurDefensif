@@ -1,0 +1,13 @@
+package puissanceQuatre;
+
+
+public class JoueurDefensif {
+
+	public JoueurDefensif() {
+	}
+
+	public static void main(String[] args) {
+
+	}
+
+}
