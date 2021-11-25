@@ -1,29 +1,22 @@
 package puissance4;
 
 public class Jeton {
-	private Coordonnee place;
 	private boolean couleur; // true = couleur rouge, false = couleur jaune
 	
-	public Jeton(Coordonnee place) {
-		this.place = place;
-		// La valeur par défaut du boolean est false donc la couleur par défaut est jaune
+	public Jeton() {
+		this.couleur = false;
 	}
 	
-	public Jeton(Coordonnee place, boolean couleur) {
-		this.place = place;
+	public Jeton(boolean couleur) {
 		this.couleur = couleur;
 	}
-	
-	public Coordonnee getPlace() {
-		return this.place;
-	}
-	
+
 	public boolean getCouleur() {
 		return this.couleur;
 	}
 	
 	public String toString() {
-		return "Les coordonnées sont : " + this.place + ". La couleur du jeton est " + (couleur ? "rouge." : "jaune."); 
+		return "La couleur du jeton est " + (couleur ? "rouge." : "jaune."); 
 	}
 	
 	public static void main(String[] args) {
