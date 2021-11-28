@@ -24,6 +24,11 @@ public class Jeton {
 		public boolean getCouleur() {
 			return this.couleur;
 		}
+		
+		public String toString() {
+			return "Les coordonnées sont : " + this.place + ". La couleur du jeton est " + 
+		if couleur ? "rouge." : "jaune."; 
+		}
 	}
 
 	public static void main(String[] args) {
