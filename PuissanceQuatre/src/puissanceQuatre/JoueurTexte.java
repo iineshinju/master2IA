@@ -44,20 +44,28 @@ public class JoueurTexte extends JoueurAvecGrille {
 		System.out.println("Entrez la coordonnée de placement");
 		String input = sc.next();
 		Coordonnee c = new Coordonnee(input);
-		Coordonnee[] memoire2= new Coordonnee[this.memoire.length+1];
-		for(int i=0; i<this.memoire.length; i++) {
-			memoire2[i]=this.memoire[i];
+		int i=0;
+		while(memoire[i]!=c && i<this.memoire.length) {
+			i++;
 		}
-		memoire2[memoire2.length-1]=c;
-		if(this.grille.enHorizontale( c, this.couleurJ)) 
-			etat=1;	
-		else if( this.grille.enVerticale(c, this.couleurJ))
-			etat=2;
-		else if( this.grille.enDiagonaleDecroissant(c, this.couleurJ) || this.grille.enDiagonaleCroissant(c, this.couleurJ))
-			etat=3;
+		if(i==this.memoire.length) {
+			Coordonnee[] memoire2= new Coordonnee[this.memoire.length+1];
+			for(int i=0; i<this.memoire.length; i++) {
+				memoire2[i]=this.memoire[i];
+			}
+			memoire2[memoire2.length-1]=c;
+			if(this.grille.enHorizontale( c, this.couleurJ)) 
+				etat=1;	
+			else if( this.grille.enVerticale(c, this.couleurJ))
+				etat=2;
+			else if( this.grille.enDiagonaleDecroissant(c, this.couleurJ) || this.grille.enDiagonaleCroissant(c, this.couleurJ))
+				etat=3;
+			else
+				etat=4;	
+			return etat;
+		}
 		else
-			etat=4;	
-		return etat;
+			throw new IllegalArgumentException("La case que vous avez choisit est déjà occupée, Choisissez une autre coordonnée");
 	}
 
 	public static void main(String[] args) {
