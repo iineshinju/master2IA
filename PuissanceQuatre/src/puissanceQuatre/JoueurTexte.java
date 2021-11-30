@@ -40,32 +40,32 @@ public class JoueurTexte extends JoueurAvecGrille {
 	
 	public Coordonnee choixPlacement() {
 		int etat=0;
-		System.out.println(this.grille.toString());
-		System.out.println("Entrez la coordonnée de placement");
-		String input = sc.next();
-		Coordonnee c = new Coordonnee(input);
-		int i=0;
-		while(memoire[i]!=c && i<this.memoire.length) {
-			i++;
-		}
-		if(i==this.memoire.length) {
+		System.out.println(this.g.toString());
+		System.out.println("Entrez la colonne de placement");
+		int colonne = sc.next();
+		Coordonnee c = null;
+		try {
+			this.g.ajouteJeton(this.couleurJ, colonne);
+			Coordonnee c = this.g.getDernierJeton();
 			Coordonnee[] memoire2= new Coordonnee[this.memoire.length+1];
 			for(int i=0; i<this.memoire.length; i++) {
 				memoire2[i]=this.memoire[i];
 			}
 			memoire2[memoire2.length-1]=c;
-			if(this.grille.enHorizontale( c, this.couleurJ)) 
-				etat=1;	
-			else if( this.grille.enVerticale(c, this.couleurJ))
+			boolean couleur = this.couleurJ.getCouleur();
+			if(this.g.enHorizontale( c, couleur)) 
+				etat=1;
+			else if( this.g.enVerticale(c, couleur))
 				etat=2;
-			else if( this.grille.enDiagonaleDecroissant(c, this.couleurJ) || this.grille.enDiagonaleCroissant(c, this.couleurJ))
+			else if( this.g.enDiagonaleDecroissant(c, couleur || this.g.enDiagonaleCroissant(c, couleur))
 				etat=3;
 			else
 				etat=4;	
 			return etat;
 		}
-		else
-			throw new IllegalArgumentException("La case que vous avez choisit est déjà occupée, Choisissez une autre coordonnée");
+		catch (IllegalArgumentException l) {
+			
+		}
 	}
 
 	public static void main(String[] args) {
