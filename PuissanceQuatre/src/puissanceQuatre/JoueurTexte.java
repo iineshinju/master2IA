@@ -16,7 +16,7 @@ public class JoueurTexte extends JoueurAvecGrille {
 		super(couleur);
 	}
 	
-	protected void retourPlacement(Coordonnee c, int etat) {
+	protected void retourPlacement(int etat) {
 		if(etat == 1) 
 			System.out.println("Vous avez gagné en horizontale"+'\n');
 		 if(etat == 2) 
@@ -27,7 +27,7 @@ public class JoueurTexte extends JoueurAvecGrille {
 			System.out.println("Vous êtes à égalité avec votre adversaire"+'\n');
 	}
 	
-	protected void retourObservation(Coordonnee c, int etat) {
+	protected void retourObservation(int etat) {
 		if(etat == 1) 
 			System.out.println("Votre adversaire a gagné en horizontale"+'\n');
 		 if(etat == 2) 
