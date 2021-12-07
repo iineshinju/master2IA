@@ -29,13 +29,18 @@ public class Grille {
 		return this.dernierJeton;
 	}
 	
-	public void ajouteJeton(Jeton jeton, int colonne) {
+	public int getLigne(int colonne) {
 		if (colonne < 0 || colonne > 6)
 			throw new IllegalArgumentException("La colonne " + colonne +" est en dehors de la grille.");
 		int ligne = 5;
 		while (jetons[ligne][colonne] != null) {
 			ligne--;
 		}
+		return ligne;
+	}
+	
+	public void ajouteJeton(Jeton jeton, int colonne) {
+		int ligne = getLigne(colonne);
 		if(ligne>0) {
 			jetons[ligne][colonne] = jeton;
 			dernierJeton = new Coordonnee(ligne, colonne);
@@ -43,97 +48,97 @@ public class Grille {
 	}
 	
 	public boolean enHorizontale(Coordonnee c, boolean couleurJ) {
-		int n = 1;//n compte le nombre de jeton aligné
+		int aligner = 1;
 		int col = c.getColonne();
 		int lig = c.getLigne();
-		//verification a droite la ligne reste la meme et la colonne augmente
+
 		for (int i = 1; i+col < 6; i++) {
 			if (jetons[lig][col+i] != null && jetons[lig][col+i].getCouleur() == couleurJ)
-				n++;
+				aligner++;
 			else if (jetons[lig][col+i] != null && jetons[lig][col+i].getCouleur() != couleurJ)
 				i = 10;
 		}
 		
-		//verification a gauche la ligne reste la meme et la colonne diminue
 		for (int j = 1; col-j >= 0; j++) {
 			if (jetons[lig][col-j] != null && jetons[lig][col-j].getCouleur() == couleurJ)
-				n++;
+				aligner++;
 			else if (jetons[lig][col-j] != null && jetons[lig][col-j].getCouleur() != couleurJ)
 				j = 10;
 		}
-		//si n >= 4 alors on gagne a l'horizontale
-		if(n >= 4)
+		
+		if(aligner >= 4)
 			return true;
 		return false;
 	}
 	
 	public boolean enVerticale(Coordonnee c, boolean couleurJ) {
-		int n = 1;//n compte le nombre de jeton aligné
+		int aligner = 1;
 		int col = c.getColonne();
 		int lig = c.getLigne();
-		//verification en haut la colonne reste la meme et la ligne diminue
+		
 		for (int i = 1; lig-i >=0; i++) {
 			if (jetons[lig-i][col] != null && jetons[lig-i][col].getCouleur() == couleurJ)
-				n++;
+				aligner++;
 			else if (jetons[lig-i][col] != null && jetons[lig-i][col].getCouleur() != couleurJ)
 				i = 10;
 		}
 		
-		//verification a bas la colonne reste la meme et la ligne augmente
 		for (int j = 1; j+lig < 6; j++) {
 			if (jetons[lig+j][col] != null && jetons[lig+j][col].getCouleur() == couleurJ)
-				n++;
+				aligner++;
 			else if (jetons[lig+j][col] != null && jetons[lig+j][col].getCouleur() != couleurJ)
 				j = 10;
 		}
-		if(n >= 4)
+		
+		if(aligner >= 4)
 			return true;
 		return false;
 	}
 	
 	public boolean enDiagonaleDecroissant(Coordonnee c,boolean couleurJ) {
-		int n = 1;//n compte le nombre de jeton aligné
+		int aligner = 1;
 		int col = c.getColonne();
 		int lig = c.getLigne();
-		//verification diagonale d'en haut a droite a en bas a gauche
-		//verification en haut a droite la colonne augmente et la ligne diminue
+
 		for (int i = 1; lig-i >=0 && col-i >=0; i++) {
-			System.out.println(c + " " + jetons[lig-i][col-i] + " " + (new Coordonnee(lig-i, col-i)).toString());
 			if (jetons[lig-i][col-i] != null && jetons[lig-i][col-i].getCouleur() == couleurJ)
-				n++;
+				aligner++;
+			else if (jetons[lig-i][col-i] != null && jetons[lig-i][col-i].getCouleur() != couleurJ)
+				i = 10;
 		}
-		//verification en bas a gauche la colonne diminue et la ligne augmente
+
 		for (int j = 1; j+lig < 6 && col+j < 7; j++) {
-			System.out.println(c + " " + jetons[lig+j][col+j] + " " + (new Coordonnee(lig+j, col+j)).toString());
 			if (jetons[lig+j][col+j] != null && jetons[lig+j][col+j].getCouleur() == couleurJ)
-				n++;
+				aligner++;
+			else if (jetons[lig+j][col+j] != null && jetons[lig+j][col+j].getCouleur() != couleurJ)
+				j = 10;
 		}
-		System.out.println(n);
-		//si n >= 4 alors on gagne
-		if(n >= 4)
+
+		if(aligner >= 4)
 			return true;
 		return false;
 	}
 	
 	public boolean enDiagonaleCroissant(Coordonnee c,boolean couleurJ) {
-		int n = 1;//n compte le nombre de jeton aligné
+		int aligner = 1;
 		int col = c.getColonne();
 		int lig = c.getLigne();
-		//verification diagonale d'en haut a droite a en bas a gauche
-		//verification en haut a droite la colonne augmente et la ligne diminue
+		
 		for (int i = 1; lig-i >=0 && col+i < 7; i++) {
-			System.out.println(c + " " + jetons[lig-i][col+i] + " " + (new Coordonnee(lig-i, col+i)).toString());
 			if (jetons[lig-i][col+i] != null && jetons[lig-i][col+i].getCouleur() == couleurJ)
-				n++;
+				aligner++;
+			else if (jetons[lig-i][col+i] != null && jetons[lig-i][col+i].getCouleur() != couleurJ)
+				i = 10;
 		}
-		//verification en bas a gauche la colonne diminue et la ligne augmente
+
 		for (int j = 1; j+lig < 6 && col-j >= 0; j++) {
-			System.out.println(c + " " + jetons[lig+j][col+j] + " " + (new Coordonnee(lig+j, col+j)).toString());
-			if (jetons[lig+j][col] != null && jetons[lig+j][col].getCouleur() == couleurJ)
-				n++;
+			if (jetons[lig+j][col-j] != null && jetons[lig+j][col-j].getCouleur() == couleurJ)
+				aligner++;
+			else if (jetons[lig+j][col-j] != null && jetons[lig+j][col-j].getCouleur() != couleurJ)
+				j = 10;
 		}
-		//si n >= 4 alors on gagne
-		if(n >= 4)
+
+		if(aligner >= 4)
 			return true;
 		return false;
 	}
@@ -144,15 +149,6 @@ public class Grille {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Grille g = new Grille ();
-		Jeton j = new Jeton(true);
-		Jeton r = new Jeton();
-		g.ajouteJeton(j, 0);
-		g.ajouteJeton(r, 0);
-		g.ajouteJeton(j, 1);
-		g.ajouteJeton(j, 2);
-		g.ajouteJeton(j, 3);
-		System.out.println(g.toString());
 	}
 
 }
