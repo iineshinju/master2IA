@@ -3,7 +3,12 @@ package puissanceQuatre;
 
 public class JoueurDefensif {
 
-	public JoueurDefensif() {
+	public JoueurDefensif(Jeton jeton) {
+		super(jeton);
+	}
+
+	public JoueurDefensif(String nom, Jeton jeton) {
+		super(nom, jeton);
 	}
 
 	public static void main(String[] args) {
