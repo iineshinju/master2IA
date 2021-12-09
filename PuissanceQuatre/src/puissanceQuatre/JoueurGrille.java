@@ -18,6 +18,10 @@ public class JoueurGrille extends Joueur {
 		g = grille;
 	}
 	
+	public Grille getG() {
+		return this.g;
+	}
+	
 	@Override
 	public int choixPlacement() {//retour etat de ton jeu apres ton placement
 		 sc = new Scanner(System.in);
