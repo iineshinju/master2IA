@@ -25,6 +25,10 @@ public abstract class Joueur {
 	public String getNom() {
 		return this.nom;
 	}
+	
+	public Jeton getJeton() {
+		return this.couleurJ;
+	}
   
   public Coordonnee[] getMemoire() {
 		return this.memoire;
