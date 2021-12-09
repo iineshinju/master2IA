@@ -10,6 +10,10 @@ public class JoueurDefensif {
 	public JoueurDefensif(String nom, Jeton jeton) {
 		super(nom, jeton);
 	}
+	
+	public int CompteVoisin(Coordonnee c) {
+		return 0;
+	}
 
 	public static void main(String[] args) {
 
