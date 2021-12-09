@@ -18,6 +18,10 @@ public class JoueurDefensif {
 	public int CompteVoisinLoin(Coordonnee c) {
 		return 0;
 	}
+	
+	public int choixPlacement() {
+		return 0;
+	}
 
 	public static void main(String[] args) {
 
