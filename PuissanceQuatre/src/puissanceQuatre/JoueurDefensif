@@ -22,6 +22,10 @@ public class JoueurDefensif {
 	public int choixPlacement() {
 		return 0;
 	}
+	
+	protected void retourPlacement(int etat) {
+
+	}
 
 	public static void main(String[] args) {
 
