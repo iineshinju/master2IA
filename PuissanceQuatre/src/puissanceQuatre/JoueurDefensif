@@ -31,7 +31,18 @@ public class JoueurDefensif {
 	}
 	
 	public int CompteVoisinLoin(Coordonnee c) {
-		return 0;
+		int voisin = 0;
+		int col = c.getColonne();
+		int lig = c.getLigne();
+		Coordonnee[] memoireAdversaire= adversaire.getMemoire();
+
+		for(int i=0; i<= memoireAdversaire.length ; i++) {
+			if(memoireAdversaire[i].getLigne() <= lig +2 || memoireAdversaire[i].getLigne() >= lig - 2) {
+				if(memoireAdversaire[i].getColonne() <= col+2 || memoireAdversaire[i].getColonne() >= col-2)
+					voisin ++;
+			}
+		}
+		return voisin;
 	}
 	
 	public int choixPlacement() {
