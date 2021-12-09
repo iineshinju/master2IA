@@ -9,7 +9,7 @@ public abstract class Joueur {
 
 	private Coordonnee[] memoire; // memoire des placements des jetons d�une couleur
 
-	private Joueur adversaire;
+	protected Joueur adversaire;
 	private String nom;
 	protected Jeton couleurJ;
 
