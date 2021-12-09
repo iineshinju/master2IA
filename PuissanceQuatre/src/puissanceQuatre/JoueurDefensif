@@ -46,6 +46,12 @@ public class JoueurDefensif {
 	}
 	
 	public int choixPlacement() {
+		int choix = 0 ;
+		for(int i=0; i<= 6 ; i++) {
+			if(adversaire.CompteVoisin(new Coordonnee(adversaire.getG().getLigne(i),i)) > choix)
+				choix =adversaire.CompteVoisin(new Coordonnee(adversaire.getG().getLigne(i),i));
+		}
+		g.ajouteJeton(adversaire.getJeton(), choix);
 		return 0;
 	}
 	
