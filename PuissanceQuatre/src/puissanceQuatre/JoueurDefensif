@@ -12,7 +12,22 @@ public class JoueurDefensif {
 	}
 	
 	public int CompteVoisin(Coordonnee c) {
-		return 0;
+		int voisin = 0;
+		int col = c.getColonne();
+		int lig = c.getLigne();
+		Coordonnee[] memoireAdversaire= adversaire.getMemoire(); 
+
+		for(int i=0; i<= memoireAdversaire.length ; i++) {
+			if(memoireAdversaire[i].getLigne() == lig) {
+				if(memoireAdversaire[i].getColonne() == col+1 || memoireAdversaire[i].getColonne() == col-1)
+					voisin ++;
+			}
+			if(memoireAdversaire[i].getLigne() == lig +1 ||memoireAdversaire[i].getLigne() == lig -1) {
+				if(memoireAdversaire[i].getColonne() == col+1 || memoireAdversaire[i].getColonne() == col-1 || memoireAdversaire[i].getColonne() == col)
+					voisin ++;
+			}
+		}
+		return voisin;
 	}
 	
 	public int CompteVoisinLoin(Coordonnee c) {
