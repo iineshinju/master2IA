@@ -7,10 +7,10 @@ public abstract class Joueur {
 	public final static int DIAGONALE = 3;
 	public final static int EGALITE = 4;
 
-	protected Coordonnee[] memoire; // memoire des placements des jetons d’une couleur
+	protected Coordonnee[] memoire; // memoire des placements des jetons dï¿½une couleur
 	protected Grille g;
 	
-	private Joueur adversaire;
+	protected Joueur adversaire;
 	private String nom = "";
 	protected Jeton jetonJ;
 
