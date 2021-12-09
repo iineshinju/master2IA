@@ -36,26 +36,26 @@ public class JoueurGrille extends Joueur {
 	@Override
 	protected void retourPlacement(int etat) {//Retourne le message en fonction de l'etat
 		if (etat == 1)
-			System.out.println("Vous avez gagné en Verticale.");
+			System.out.println("Vous avez gagnï¿½ en Verticale.");
 		else if (etat == 2)
-			System.out.println("Vous avez gagné en Horizontale.");
+			System.out.println("Vous avez gagnï¿½ en Horizontale.");
 		else if (etat == 3)
-			System.out.println("Vous avez gagné en Diagonale.");
+			System.out.println("Vous avez gagnï¿½ en Diagonale.");
 		else if (etat == 4)
-			System.out.println("Egalité !");
+			System.out.println("Egalitï¿½ !");
 		
 	}
 
 	@Override
 	protected void retourObservation(int etat) { //Retourne un message en fonction du jeu de l'adversaire
 		if (etat == 1)
-			System.out.println("Vous avez perdu en Verticale");
+			System.out.println("Vous avez perdu en Verticale.");
 		else if (etat == 2)
-			System.out.println("Vous avez perdu en Horizontale ");
+			System.out.println("Vous avez perdu en Horizontale.");
 		else if (etat == 3)
-			System.out.println("Vous avez perdu en Diagonale ");
+			System.out.println("Vous avez perdu en Diagonale.");
 		else if (etat == 4)
-			System.out.println("Egalité ! ");
+			System.out.println("Egalitï¿½ !");
 		
 	}	
 
