@@ -55,13 +55,6 @@ public class JoueurDefensif {
 		return 0;
 	}
 	
-	protected void retourPlacement(int etat) {
-
-	}
-	
-	protected void retourObservation(int etat) { 
-
-	}
 
 	public static void main(String[] args) {
 
