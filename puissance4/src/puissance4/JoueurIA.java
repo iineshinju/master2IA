@@ -27,6 +27,24 @@ public class JoueurIA extends Joueur {
 		return indiceMax;
 	}
 	
+	public boolean positionNull() {
+		int verification = 0;
+		for (int i = 0; i < this.position.length; i++) {
+			if (this.position[i] == null)
+				verification++;
+		}
+		return verification == this.position.length;
+	}
+	
+	public int positionIndice() {
+		int verification = 0;
+		for (int i = 0; i < this.position.length; i++) {
+			if (this.position[i] != null)
+				verification++;
+		}
+		return verification;
+	}
+	
 	@Override
 	public int choixPlacement() {//retour etat de ton jeu apres ton placement
 		
