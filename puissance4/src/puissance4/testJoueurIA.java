@@ -4,13 +4,13 @@ public class testJoueurIA {
 	
 	static Jeton j = new Jeton();
 	
-	public static boolean poidsColonneToutVide() {
+	public static boolean testPoidsColonneToutVide() {
 		Grille g = new Grille();
 		JoueurIA ia = new JoueurIA(j, g);
 		return ia.poidsColonne() == 0;
 	}
 	
-	public static boolean poidsColonneUnVide() {
+	public static boolean testPoidsColonneUnVide() {
 		Grille g = new Grille();
 		JoueurIA ia = new JoueurIA(j, g);
 		g.ajouteJeton(j, 1);
@@ -24,7 +24,7 @@ public class testJoueurIA {
 		return ia.poidsColonne() == 4;
 	}
 
-	public static boolean poidsColonne() {
+	public static boolean testPoidsColonne() {
 		Grille g = new Grille();
 		JoueurIA ia = new JoueurIA(j, g);
 		g.ajouteJeton(j, 1);
@@ -42,12 +42,28 @@ public class testJoueurIA {
 		return ia.poidsColonne() == 2;
 	}
 	
+	public static boolean testPositionNull() {
+		Grille g = new Grille();
+		JoueurIA ia = new JoueurIA(j, g);
+		return ia.positionNull();
+	}
+	
+	public static boolean testPositionIndice() {
+		Grille g = new Grille();
+		JoueurIA ia = new JoueurIA(j, g);
+		for (int i = 0; i < 3; i++) {
+			ia.position[i] = new Coordonnee(1,i);
+		}
+		return ia.positionIndice() == 3;
+	}
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.println(poidsColonneToutVide());
-		System.out.println(poidsColonneUnVide());
-		System.out.println(poidsColonne());
-		
+		System.out.println(testPoidsColonneToutVide());
+		System.out.println(testPoidsColonneUnVide());
+		System.out.println(testPoidsColonne());
+		System.out.println(testPositionNull());
+		System.out.println(testPositionIndice());
 	}
 
 }
