@@ -7,7 +7,6 @@ public abstract class Joueur {
 	public final static int DIAGONALE = 3;
 	public final static int EGALITE = 4;
 
-	protected Coordonnee[] memoire; // memoire des placements des jetons d�une couleur
 	protected Grille g;
 	
 	protected Joueur adversaire;
@@ -28,7 +27,7 @@ public abstract class Joueur {
 	public String getNom() {
 		return this.nom;
 	}
-
+	
 	public void jouerAvec(Joueur j) {
 		j.adversaire = this;
 		this.adversaire = j;
