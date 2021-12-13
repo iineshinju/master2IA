@@ -148,19 +148,11 @@ public class JoueurIA extends Joueur {
 		return indiceMax;
 	}
 	
-	public int alignementColonne(Coordonnee[] tab) {
-		int[] alignement = new int[7];
-		for (int i = 0; i < this.dernierIndiceTab(this.position); i++) {
-			alignement[this.position[i].getColonne()] += 1;
-		}
-
-		String res = "[ ";
-		for (int i = 0 ; i < alignement.length; i++) {
-				res += alignement[i] + ", ";
-		}
-		res += "]";
-		System.out.println(res);
-		return this.indiceMaxTab(alignement);
+	public boolean verifVide(Coordonnee c) {
+		int ligneC = c.getLigne();
+		int colonneC = c.getColonne();
+		int ligneVerif = this.g.getLigne(colonneC);
+		return ligneVerif == ligneC;
 	}
 	
 	@Override
@@ -177,7 +169,6 @@ public class JoueurIA extends Joueur {
 	   		} else if (indice > 1){
 	   			voisinVideIndice = this.concatenationVide(indice);
 	   		}
-	   		System.out.println("alignement : " +this.alignementColonne(voisinVideIndice));
 	   		int randomI = (int)(Math.random()*(this.dernierIndiceTab(voisinVideIndice)));
 	   		colonne = this.tableauNull(voisinVideIndice) ? this.poidsColonne() : voisinVideIndice[randomI].getColonne();
 	   	}
@@ -229,7 +220,7 @@ public class JoueurIA extends Joueur {
 		Jeton r = new Jeton(true);
 		JoueurIA a = new JoueurIA("JoueurA", j, g);
 	   	JoueurGrille b = new JoueurGrille("JoueurB", r, g);
-	   	a.jouerAvec(b);		
+	   	b.jouerAvec(a);		
 	}
 
 }
