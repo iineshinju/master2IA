@@ -45,16 +45,27 @@ public class testJoueurIA {
 	public static boolean testPositionNull() {
 		Grille g = new Grille();
 		JoueurIA ia = new JoueurIA(j, g);
-		return ia.positionNull();
+		return ia.positionNull(ia.position);
 	}
 	
 	public static boolean testPositionIndice() {
 		Grille g = new Grille();
 		JoueurIA ia = new JoueurIA(j, g);
 		for (int i = 0; i < 3; i++) {
-			ia.position[i] = new Coordonnee(1,i);
+			ia.position[i] = new Coordonnee(5,i);
 		}
-		return ia.positionIndice() == 3;
+		return ia.positionIndice(ia.position) == 3;
+	}
+	
+	public static boolean testVoisinVide() {
+		Grille g = new Grille();
+		JoueurIA ia = new JoueurIA(j, g);
+		g.ajouteJeton(ia.jetonJ, 0);
+		ia.position[0] = g.getDernierJeton();
+		ia.voisinVide(1);
+		System.out.println(g.getLigne(0));
+		System.out.println(g.getLigne(1));
+		return false;
 	}
 	
 	public static void main(String[] args) {
@@ -64,6 +75,7 @@ public class testJoueurIA {
 		System.out.println(testPoidsColonne());
 		System.out.println(testPositionNull());
 		System.out.println(testPositionIndice());
+		System.out.println(testVoisinVide());
 	}
 
 }
