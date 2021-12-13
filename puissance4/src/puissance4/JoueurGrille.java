@@ -31,6 +31,14 @@ public class JoueurGrille extends Joueur {
 		   		restart = true;
 		   		System.out.println("Valeur donnée incorrect.\n"
 		   				+ "Donner le numéro de colonne dans laquelle vous voulez mettre votre jeton de 1 à 7 : ");
+		   	} catch (ArrayIndexOutOfBoundsException e) {
+		   		restart = true;
+		   		System.out.println("Valeur donnée incorrect.\n"
+		   				+ "La colonne choisit est pleine, choissisez en une autre dans laquelle vous pouvez mettre votre jeton : ");
+		   	} catch (Exception e) {
+		   		restart = true;
+		   		System.out.println("Valeur donnée incorrect.\n"
+		   				+ "Donner un numéro de colonne valide entre 1 et 7 : ");
 		   	}
 	   	}
 	   	
