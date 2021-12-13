@@ -152,39 +152,114 @@ public class JoueurIA extends Joueur {
 		int ligneC = c.getLigne();
 		int colonneC = c.getColonne();
 		int ligneVerif = this.g.getLigne(colonneC);
-		return ligneVerif == ligneC;
+		return ligneVerif >= ligneC;
 	}
 	
 	public int verifVoisin(Coordonnee c) {
-		int[] v = new int[4];
-		v[0] = diagDecroissant(c);
-		v[1] = gauche(c) + droite(c);
-		v[2] = diagCroissant(c);
-		v[3] = bas(c);
-		return indiceMaxTab(v);
+		int v = 0;
+		v += diagDecroissantHaut(c) + diagDecroissantBas(c);
+		v += gauche(c) + droite(c);
+		v += diagCroissantHaut(c) + diagCroissantBas(c);
+		v += bas(c);
+		return v;
 		
 	}
 	
-	public int diagDecroissant(Coordonnee c) {
-		if()
-			
+	public boolean dansPosition(Coordonnee c) {
+		for (int i = 0; i< this.dernierIndiceTab(position); i++) {
+			if (position[i].equals(c))
+				return true;
+		}
+		return false;
 	}
 	
-	public int diagCroissant(Coordonnee c) {
+	public int diagDecroissantHaut(Coordonnee c) {
+		if ((c.getColonne() == 0) || (c.getLigne() == 0))
+			return 0;
+		Coordonnee dh = new Coordonnee(c.getLigne()-1,c.getColonne()-1);
+		if (this.verifVide(dh))
+			return 0;
+		else if (this.dansPosition(dh))
+			return (1 + this.diagDecroissantHaut(dh));
+		return 0;
+	}
+	
+	public int diagDecroissantBas(Coordonnee c) {
+		if ((c.getColonne() == 6) || (c.getLigne() == 5))
+			return 0;
+		Coordonnee db = new Coordonnee(c.getLigne()+1, c.getColonne()+1);
+		if (this.verifVide(db))
+			return 0;
+		else if (this.dansPosition(db))
+			return (1 + this.diagDecroissantHaut(db));
+		return 0;
+	}
+	
+	public int diagCroissantHaut(Coordonnee c) {
+		if((c.getColonne() == 6) || (c.getLigne() == 0)) {
+			return 0;
+		}
+		Coordonnee dh = new Coordonnee(c.getLigne()-1, c.getColonne()+1);
+		if (verifVide(dh))
+			return 0;
+		else if (this.dansPosition(dh))
+			return (1 + diagCroissantHaut(dh));
+		return 0;
+	}
+	
+	public int diagCroissantBas(Coordonnee c) {
+		if((c.getColonne() == 0) || (c.getLigne() == 5))
+			return 0;
+		Coordonnee db = new Coordonnee(c.getLigne()+1,c.getColonne()-1);
+		if(verifVide(db))
+			return 0;
+		else if (this.dansPosition(db))
+			return (1 + diagCroissantBas(db));
 		return 0;
 	}
 	
 	public int gauche(Coordonnee c) {
-		return 0;
+		if (c.getColonne() == 0)
+			return 0;
+		else {
+			Coordonnee gauche = new Coordonnee(c.getLigne(), c.getColonne() -1);
+			if (this.verifVide(gauche))
+				return 0;
+			else if (this.dansPosition(gauche))
+				return 1 + this.gauche(gauche);
+			return 0;
+		}
+		
 	}
 	
 	public int droite(Coordonnee c) {
-		return 0;
+		if (c.getColonne() == 6)
+			return 0;
+		else {
+			Coordonnee droite = new Coordonnee(c.getLigne(), c.getColonne() + 1);
+			if (this.verifVide(droite))
+				return 0;
+			else if (this.dansPosition(droite))
+				return 1 + this.droite(droite);
+			return 0;
+		}
 	}
 	
 	public int bas(Coordonnee c) {
-		return 0;
-			
+		if (c.getLigne() == 5)
+			return 0;
+		else {
+			Coordonnee bas = new Coordonnee(c.getLigne()+1, c.getColonne());
+			if (this.verifVide(bas))
+				return 0;
+			else if (this.dansPosition(bas))
+				return 1 + this.bas(bas);
+			return 0;
+		}
+	}
+	
+	public boolean indiceJouable(int colonne) {
+		return false;
 	}
 	
 	@Override
@@ -201,8 +276,14 @@ public class JoueurIA extends Joueur {
 	   		} else if (indice > 1){
 	   			voisinVideIndice = this.concatenationVide(indice);
 	   		}
-	   		int randomI = (int)(Math.random()*(this.dernierIndiceTab(voisinVideIndice)));
-	   		colonne = this.tableauNull(voisinVideIndice) ? this.poidsColonne() : voisinVideIndice[randomI].getColonne();
+	   		System.out.println(this.affichagetab(voisinVideIndice));
+	   		int[] valVoisin = new int[voisinVideIndice.length];
+	   		for(int i = 0; i < this.dernierIndiceTab(voisinVideIndice) ; i++) {
+	   			valVoisin[i] = verifVoisin(voisinVideIndice[i]);
+	   			System.out.println("verifVoisin : "+verifVoisin(voisinVideIndice[i]));
+	   		}
+	   		System.out.println("voisinIndice : "+voisinVideIndice[this.indiceMaxTab(valVoisin)]);
+	   		colonne = voisinVideIndice[this.indiceMaxTab(valVoisin)].getColonne();
 	   	}
 		
 		this.g.ajouteJeton(this.jetonJ, colonne);
