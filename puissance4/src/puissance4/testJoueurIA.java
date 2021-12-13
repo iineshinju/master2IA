@@ -45,7 +45,7 @@ public class testJoueurIA {
 	public static boolean testPositionNull() {
 		Grille g = new Grille();
 		JoueurIA ia = new JoueurIA(j, g);
-		return ia.positionNull(ia.position);
+		return ia.tableauNull(ia.position);
 	}
 	
 	public static boolean testPositionIndice() {
@@ -54,18 +54,91 @@ public class testJoueurIA {
 		for (int i = 0; i < 3; i++) {
 			ia.position[i] = new Coordonnee(5,i);
 		}
-		return ia.positionIndice(ia.position) == 3;
+		return ia.dernierIndiceTab(ia.position) == 3;
 	}
 	
-	public static boolean testVoisinVide() {
+	public static boolean testVerifVide() {
 		Grille g = new Grille();
 		JoueurIA ia = new JoueurIA(j, g);
-		g.ajouteJeton(ia.jetonJ, 0);
-		ia.position[0] = g.getDernierJeton();
-		ia.voisinVide(1);
-		System.out.println(g.getLigne(0));
-		System.out.println(g.getLigne(1));
-		return false;
+		Coordonnee c = new Coordonnee("A6");
+		return ia.verifVide(c);
+	}
+	
+	public static boolean testDiagDecroissantHaut() {
+		Grille g = new Grille();
+		JoueurIA ia = new JoueurIA(j, g);
+		g.ajouteJeton(j, 0);
+		ia.position[ia.dernierIndiceTab(ia.position)]= g.getDernierJeton();
+		g.ajouteJeton(j, 0);
+		ia.position[ia.dernierIndiceTab(ia.position)]= g.getDernierJeton();
+		Coordonnee c = new Coordonnee("B6");
+		return ia.diagDecroissantHaut(c) == 1;
+	}
+	
+	public static boolean testDiagDecroissantBas() {
+		Grille g = new Grille();
+		JoueurIA ia = new JoueurIA(j, g);
+		g.ajouteJeton(j, 0);
+		ia.position[ia.dernierIndiceTab(ia.position)]= g.getDernierJeton();
+		g.ajouteJeton(j, 1);
+		ia.position[ia.dernierIndiceTab(ia.position)]= g.getDernierJeton();
+		Coordonnee c = new Coordonnee("A5");
+		return ia.diagDecroissantBas(c) == 1;
+	}
+	
+	public static boolean testDiagCroissantHaut() {
+		Grille g = new Grille();
+		JoueurIA ia = new JoueurIA(j, g);
+		g.ajouteJeton(j, 1);
+		ia.position[ia.dernierIndiceTab(ia.position)]= g.getDernierJeton();
+		g.ajouteJeton(j, 1);
+		ia.position[ia.dernierIndiceTab(ia.position)]= g.getDernierJeton();
+		Coordonnee c = new Coordonnee("A6");
+		return ia.diagCroissantHaut(c) == 1;
+	}
+	
+	public static boolean testDiagCroissantBas() {
+		Grille g = new Grille();
+		JoueurIA ia = new JoueurIA(j, g);
+		g.ajouteJeton(j, 0);
+		ia.position[ia.dernierIndiceTab(ia.position)]= g.getDernierJeton();
+		g.ajouteJeton(j, 1);
+		ia.position[ia.dernierIndiceTab(ia.position)]= g.getDernierJeton();
+		Coordonnee c = new Coordonnee("B5");
+		return ia.diagCroissantBas(c) == 1;
+	}
+	
+	public static boolean testGauche() {
+		Grille g = new Grille();
+		JoueurIA ia = new JoueurIA(j, g);
+		g.ajouteJeton(j, 0);
+		ia.position[ia.dernierIndiceTab(ia.position)]= g.getDernierJeton();
+		g.ajouteJeton(j, 1);
+		ia.position[ia.dernierIndiceTab(ia.position)]= g.getDernierJeton();
+		Coordonnee c = new Coordonnee("C6");
+		return ia.gauche(c) == 2;
+	}
+	
+	public static boolean testDroite() {
+		Grille g = new Grille();
+		JoueurIA ia = new JoueurIA(j, g);
+		g.ajouteJeton(j, 2);
+		ia.position[ia.dernierIndiceTab(ia.position)]= g.getDernierJeton();
+		g.ajouteJeton(j, 1);
+		ia.position[ia.dernierIndiceTab(ia.position)]= g.getDernierJeton();
+		Coordonnee c = new Coordonnee("A6");
+		return ia.droite(c) == 2;
+	}
+	
+	public static boolean testBas() {
+		Grille g = new Grille();
+		JoueurIA ia = new JoueurIA(j, g);
+		g.ajouteJeton(j, 0);
+		ia.position[ia.dernierIndiceTab(ia.position)]= g.getDernierJeton();
+		g.ajouteJeton(j, 0);
+		ia.position[ia.dernierIndiceTab(ia.position)]= g.getDernierJeton();
+		Coordonnee c = new Coordonnee("A4");
+		return ia.bas(c) == 2;
 	}
 	
 	public static void main(String[] args) {
@@ -75,7 +148,14 @@ public class testJoueurIA {
 		System.out.println(testPoidsColonne());
 		System.out.println(testPositionNull());
 		System.out.println(testPositionIndice());
-		System.out.println(testVoisinVide());
+		System.out.println(testVerifVide());
+		System.out.println(testDiagDecroissantHaut());
+		System.out.println(testDiagDecroissantBas());
+		System.out.println(testDiagCroissantHaut());
+		System.out.println(testDiagCroissantBas());
+		System.out.println(testGauche());
+		System.out.println(testDroite());
+		System.out.println(testBas());
 	}
 
 }
