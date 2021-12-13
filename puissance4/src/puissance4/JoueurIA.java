@@ -17,7 +17,7 @@ public class JoueurIA extends Joueur {
 	public int poidsColonne() {
 		int[] poids = new int[7]; // on crée un tableau contenant le nombre de ligne vide dans chaque colonne
 		int maxVal = 5;
-		int indiceMax = 0;
+		int ligneMin = 0;
 		
 		for (int i = 0; i < poids.length ; i++) {
 			int ligne = this.g.getLigne(i);
@@ -25,20 +25,20 @@ public class JoueurIA extends Joueur {
 			
 		    if (poids[i] < maxVal) {
 		       maxVal = poids[i];
-		       indiceMax = i;
+		       ligneMin = i;
 		    }
 		}
 		
-		if (indiceMax == 0)
-			indiceMax = 4;
-		if (indiceMax == 6)
-			indiceMax = 5;
+		if (ligneMin == 0)
+			ligneMin = 4;
+		if (ligneMin == 6)
+			ligneMin = 5;
 		else
-		    indiceMax += Math.random() * (3) -1;  
-		return indiceMax;
+		    ligneMin += Math.random() * (3) -1;  
+		return ligneMin;
 	}
 	
-	public boolean positionNull(Coordonnee[] tableau) {
+	public boolean tableauNull(Coordonnee[] tableau) {
 		int verification = 0;
 		for (int i = 0; i < tableau.length; i++) {
 			if (tableau[i] == null)
@@ -47,7 +47,7 @@ public class JoueurIA extends Joueur {
 		return verification == this.position.length;
 	}
 	
-	public int positionIndice(Coordonnee[] tableau) {
+	public int dernierIndiceTab(Coordonnee[] tableau) {
 		int verification = 0;
 		for (int i = 0; i < tableau.length; i++) {
 			if (tableau[i] != null)
@@ -64,48 +64,48 @@ public class JoueurIA extends Joueur {
 		
 		if (initColonne == 0) {
 			if (this.g.getLigne(initColonne) + 1 == initLigne)
-				vide[positionIndice(vide)] = new Coordonnee(this.g.getLigne(initColonne), initColonne);
+				vide[dernierIndiceTab(vide)] = new Coordonnee(this.g.getLigne(initColonne), initColonne);
 
 			if (this.g.getLigne(initColonne + 1) == initLigne)
-				vide[positionIndice(vide)] = new Coordonnee(this.g.getLigne(initColonne + 1), initColonne +1);
+				vide[dernierIndiceTab(vide)] = new Coordonnee(this.g.getLigne(initColonne + 1), initColonne +1);
 			else if (this.g.getLigne(initColonne + 1) + 1 == initLigne)
-				vide[positionIndice(vide)] = new Coordonnee(this.g.getLigne(initColonne + 1), initColonne +1);
+				vide[dernierIndiceTab(vide)] = new Coordonnee(this.g.getLigne(initColonne + 1), initColonne +1);
 			
 			if (initLigne !=5 && (this.g.getLigne(initColonne + 1) == initLigne + 1)) 
-				vide[positionIndice(vide)] = new Coordonnee(initLigne + 1, initColonne +1);
+				vide[dernierIndiceTab(vide)] = new Coordonnee(initLigne + 1, initColonne +1);
 				
 		} else if (initColonne == 6) {
 
 			if (this.g.getLigne(initColonne) + 1 == initLigne)
-				vide[positionIndice(vide)] = new Coordonnee(this.g.getLigne(initColonne), initColonne);
+				vide[dernierIndiceTab(vide)] = new Coordonnee(this.g.getLigne(initColonne), initColonne);
 			
 			if (this.g.getLigne(initColonne - 1) == initLigne)
-				vide[positionIndice(vide)] = new Coordonnee(this.g.getLigne(initColonne - 1), initColonne -1);
+				vide[dernierIndiceTab(vide)] = new Coordonnee(this.g.getLigne(initColonne - 1), initColonne -1);
 			else if (this.g.getLigne(initColonne - 1) + 1 == initLigne)
-				vide[positionIndice(vide)] = new Coordonnee(this.g.getLigne(initColonne - 1), initColonne -1);
+				vide[dernierIndiceTab(vide)] = new Coordonnee(this.g.getLigne(initColonne - 1), initColonne -1);
 			
 			if (initLigne !=5 && (this.g.getLigne(initColonne - 1) == initLigne + 1))
-				vide[positionIndice(vide)] = new Coordonnee(initLigne + 1, initColonne -1);
+				vide[dernierIndiceTab(vide)] = new Coordonnee(initLigne + 1, initColonne -1);
 		
 		} else {
 			if (this.g.getLigne(initColonne) + 1 == initLigne) 
-				vide[positionIndice(vide)] = new Coordonnee(this.g.getLigne(initColonne), initColonne);
+				vide[dernierIndiceTab(vide)] = new Coordonnee(this.g.getLigne(initColonne), initColonne);
 			
 			if (this.g.getLigne(initColonne + 1) == initLigne) 
-				vide[positionIndice(vide)] = new Coordonnee(this.g.getLigne(initColonne + 1), initColonne +1);
+				vide[dernierIndiceTab(vide)] = new Coordonnee(this.g.getLigne(initColonne + 1), initColonne +1);
 			else if (this.g.getLigne(initColonne + 1) + 1 == initLigne) 
-				vide[positionIndice(vide)] = new Coordonnee(this.g.getLigne(initColonne + 1), initColonne +1);
+				vide[dernierIndiceTab(vide)] = new Coordonnee(this.g.getLigne(initColonne + 1), initColonne +1);
 			
 			if (initLigne !=5 && (this.g.getLigne(initColonne + 1) == initLigne + 1)) 
-				vide[positionIndice(vide)] = new Coordonnee(initLigne + 1, initColonne +1);
+				vide[dernierIndiceTab(vide)] = new Coordonnee(initLigne + 1, initColonne +1);
 			
 			if (this.g.getLigne(initColonne - 1) == initLigne) 
-				vide[positionIndice(vide)] = new Coordonnee(this.g.getLigne(initColonne - 1), initColonne -1);
+				vide[dernierIndiceTab(vide)] = new Coordonnee(this.g.getLigne(initColonne - 1), initColonne -1);
 			else if (this.g.getLigne(initColonne - 1) + 1 == initLigne)
-				vide[positionIndice(vide)] = new Coordonnee(this.g.getLigne(initColonne - 1), initColonne -1);
+				vide[dernierIndiceTab(vide)] = new Coordonnee(this.g.getLigne(initColonne - 1), initColonne -1);
 			
 			if (initLigne !=5 && (this.g.getLigne(initColonne + 1) == initLigne + 1)) 
-				vide[positionIndice(vide)] = new Coordonnee(initLigne + 1, initColonne -1);
+				vide[dernierIndiceTab(vide)] = new Coordonnee(initLigne + 1, initColonne -1);
 		}
 		
 		return vide;
@@ -118,7 +118,7 @@ public class JoueurIA extends Joueur {
 			Coordonnee[] intermediaire =  this.voisinVide(i);
 			for (int j = 0; j < intermediaire.length; j++) {
 				if (intermediaire[j] != null)
-					casesVide[this.positionIndice(casesVide)] = intermediaire[j];
+					casesVide[this.dernierIndiceTab(casesVide)] = intermediaire[j];
 			}
 		}
 		return casesVide;
@@ -134,24 +134,52 @@ public class JoueurIA extends Joueur {
 		return res;
 	}
 	
+	public int indiceMaxTab(int[] tab) {
+		int valeurMax = tab[0];
+		int indiceMax = 0;
+		
+		for (int i = 1; i < tab.length; i++) {
+			if (tab[i] > valeurMax) {
+				valeurMax = tab[i];
+				indiceMax = i;
+			}
+		}
+			
+		return indiceMax;
+	}
+	
+	public int alignementColonne(Coordonnee[] tab) {
+		int[] alignement = new int[7];
+		for (int i = 0; i < this.dernierIndiceTab(this.position); i++) {
+			alignement[this.position[i].getColonne()] += 1;
+		}
+
+		String res = "[ ";
+		for (int i = 0 ; i < alignement.length; i++) {
+				res += alignement[i] + ", ";
+		}
+		res += "]";
+		System.out.println(res);
+		return this.indiceMaxTab(alignement);
+	}
+	
 	@Override
 	public int choixPlacement() {//retour etat de ton jeu apres ton placement
 		int colonne;
-		int indice = this.positionIndice(this.position);
+		int indice = this.dernierIndiceTab(this.position);
 		Coordonnee[] voisinVideIndice = null;
 		
-	   	if (this.positionNull(this.position)) {
+	   	if (this.tableauNull(this.position)) {
 	   		colonne = this.poidsColonne();
 	   	} else {
 	   		if (indice == 1) {
 	   			voisinVideIndice = this.voisinVide(indice);
 	   		} else if (indice > 1){
 	   			voisinVideIndice = this.concatenationVide(indice);
-	   		} else {
-	   			colonne = this.poidsColonne();
 	   		}
-	   		int randomI = (int)(Math.random()*(this.positionIndice(voisinVideIndice)));
-	   		colonne = this.positionNull(voisinVideIndice) ? this.poidsColonne() : voisinVideIndice[randomI].getColonne();
+	   		System.out.println("alignement : " +this.alignementColonne(voisinVideIndice));
+	   		int randomI = (int)(Math.random()*(this.dernierIndiceTab(voisinVideIndice)));
+	   		colonne = this.tableauNull(voisinVideIndice) ? this.poidsColonne() : voisinVideIndice[randomI].getColonne();
 	   	}
 		
 		this.g.ajouteJeton(this.jetonJ, colonne);
