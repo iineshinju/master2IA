@@ -155,6 +155,38 @@ public class JoueurIA extends Joueur {
 		return ligneVerif == ligneC;
 	}
 	
+	public int verifVoisin(Coordonnee c) {
+		int[] v = new int[4];
+		v[0] = diagDecroissant(c);
+		v[1] = gauche(c) + droite(c);
+		v[2] = diagCroissant(c);
+		v[3] = bas(c);
+		return indiceMaxTab(v);
+		
+	}
+	
+	public int diagDecroissant(Coordonnee c) {
+		if()
+			
+	}
+	
+	public int diagCroissant(Coordonnee c) {
+		return 0;
+	}
+	
+	public int gauche(Coordonnee c) {
+		return 0;
+	}
+	
+	public int droite(Coordonnee c) {
+		return 0;
+	}
+	
+	public int bas(Coordonnee c) {
+		return 0;
+			
+	}
+	
 	@Override
 	public int choixPlacement() {//retour etat de ton jeu apres ton placement
 		int colonne;
