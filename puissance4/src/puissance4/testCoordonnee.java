@@ -4,7 +4,7 @@ public class testCoordonnee {
 	
 	public static boolean testCoordonneeEmpty() {
 		try {
-			Coordonnee c = new Coordonnee();
+			new Coordonnee();
 		} catch (IllegalArgumentException e){
 			return true; //Si on a bien attrapé l'exception alors c'est vrai
 		}
@@ -13,7 +13,7 @@ public class testCoordonnee {
 	
 	public static boolean testCoordonneeNotInRangeColonne() {
 		try {
-			Coordonnee c = new Coordonnee(1, 7); // 7 est la 8e lettre de l'alphabet soit H, il ne fait pas partie de la grille
+			new Coordonnee(1, 7); // 7 est la 8e lettre de l'alphabet soit H, il ne fait pas partie de la grille
 		} catch (IllegalArgumentException e){
 			return true; //Si on a bien attrapé l'exception alors c'est vrai
 		}
@@ -22,7 +22,7 @@ public class testCoordonnee {
 	
 	public static boolean testCoordonneeNotInRangeLigne() {
 		try {
-			Coordonnee c = new Coordonnee(6, 1); // 6 est la 7e ligne, elle ne fait pas partie de la grille
+			new Coordonnee(6, 1); // 6 est la 7e ligne, elle ne fait pas partie de la grille
 		} catch (IllegalArgumentException e){
 			return true; //Si on a bien attrapé l'exception alors c'est vrai
 		}
@@ -31,7 +31,7 @@ public class testCoordonnee {
 	
 	public static boolean testCoordonneeInRange() {
 		try {
-			Coordonnee c = new Coordonnee(1, 1);
+			new Coordonnee(1, 1);
 		} catch (IllegalArgumentException e){
 			return false; //Si on a bien attrapé l'exception alors c'est vrai
 		}
@@ -40,7 +40,7 @@ public class testCoordonnee {
 	
 	public static boolean testCoordonneeNotInRange() {
 		try {
-			Coordonnee c = new Coordonnee(6, 7);
+			new Coordonnee(6, 7);
 		} catch (IllegalArgumentException e){
 			return true; //Si on a bien attrapé l'exception alors c'est vrai
 		}
@@ -49,7 +49,7 @@ public class testCoordonnee {
 	
 	public static boolean testCoordonneeStringIncorrect() {
 		try {
-			Coordonnee c = new Coordonnee("H7");
+			new Coordonnee("H7");
 		} catch (IllegalArgumentException e){
 			return true; //Si on a bien attrapé l'exception alors c'est vrai
 		}
@@ -58,7 +58,7 @@ public class testCoordonnee {
 
 	public static boolean testCoordonneeStringCorrect() {
 		try {
-			Coordonnee c = new Coordonnee("A1");
+			new Coordonnee("A1");
 		} catch (IllegalArgumentException e){
 			return false; 
 		}
@@ -155,7 +155,7 @@ public class testCoordonnee {
 	public static boolean testNonVoisine() {
 		Coordonnee c = new Coordonnee("C3");
 		Coordonnee d = new Coordonnee("F4");
-		return c.voisine(d);
+		return !c.voisine(d);
 	}
 	
 	public static boolean testToStringChiffre() {
@@ -165,7 +165,7 @@ public class testCoordonnee {
 	
 	public static boolean testToStringLettre() {
 		Coordonnee c = new Coordonnee("A1");
-		return "A1" == c.toString(); 
+		return "A1".equals(c.toString()); 
 	}
 	
 	public static void main(String[] args) {
