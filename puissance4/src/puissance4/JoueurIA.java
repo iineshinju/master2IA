@@ -16,16 +16,25 @@ public class JoueurIA extends Joueur {
 	
 	public int poidsColonne() {
 		int[] poids = new int[7]; // on crée un tableau contenant le nombre de ligne vide dans chaque colonne
-		int maxVal = 0;
+		int maxVal = 5;
 		int indiceMax = 0;
+		
 		for (int i = 0; i < poids.length ; i++) {
 			int ligne = this.g.getLigne(i);
 			poids[i] = ligne;
-		    if (poids[i] > maxVal) {
+			
+		    if (poids[i] < maxVal) {
 		       maxVal = poids[i];
 		       indiceMax = i;
 		    }
 		}
+		
+		if (indiceMax == 0)
+			indiceMax = 4;
+		if (indiceMax == 6)
+			indiceMax = 5;
+		else
+		    indiceMax += Math.random() * (3) -1;  
 		return indiceMax;
 	}
 	
@@ -98,23 +107,20 @@ public class JoueurIA extends Joueur {
 			if (initLigne !=5 && (this.g.getLigne(initColonne + 1) == initLigne + 1)) 
 				vide[positionIndice(vide)] = new Coordonnee(initLigne + 1, initColonne -1);
 		}
-		System.out.println("Vide : " + this.affichagetab(vide));
+		
 		return vide;
 	}
 	
 	public Coordonnee[] concatenationVide(int indice) {
 		Coordonnee[] casesVide = new Coordonnee[82];
-		System.out.println("indice de depart :" +indice);
+
 		for (int i = 1; i < indice + 1; i++) {
-			System.out.println("indice : "+ i + " coordonne : "+ this.position[i-1]);
 			Coordonnee[] intermediaire =  this.voisinVide(i);
-			System.out.println("concat-intermediaire : "+ this.affichagetab(intermediaire));
 			for (int j = 0; j < intermediaire.length; j++) {
 				if (intermediaire[j] != null)
 					casesVide[this.positionIndice(casesVide)] = intermediaire[j];
 			}
 		}
-		System.out.println("concatenation casesVide : "+ this.affichagetab(casesVide));
 		return casesVide;
 	}
 	
@@ -145,12 +151,7 @@ public class JoueurIA extends Joueur {
 	   			colonne = this.poidsColonne();
 	   		}
 	   		int randomI = (int)(Math.random()*(this.positionIndice(voisinVideIndice)));
-	   		System.out.println("positionIndice : "+this.positionIndice(this.position));
-	   		System.out.println("voisinIndice : "+this.positionIndice(voisinVideIndice));
-	   		System.out.println("randomI : " + randomI);
 	   		colonne = this.positionNull(voisinVideIndice) ? this.poidsColonne() : voisinVideIndice[randomI].getColonne();
-	   		System.out.println("colonne : "+colonne);
-	   		System.out.println("voisinVide"+this.affichagetab(voisinVideIndice));
 	   	}
 		
 		this.g.ajouteJeton(this.jetonJ, colonne);
@@ -200,7 +201,7 @@ public class JoueurIA extends Joueur {
 		Jeton r = new Jeton(true);
 		JoueurIA a = new JoueurIA("JoueurA", j, g);
 	   	JoueurGrille b = new JoueurGrille("JoueurB", r, g);
-	   	b.jouerAvec(a);		
+	   	a.jouerAvec(b);		
 	}
 
 }
