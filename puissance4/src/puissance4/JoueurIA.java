@@ -61,8 +61,9 @@ public class JoueurIA extends Joueur {
 				vide[positionIndice(vide)] = new Coordonnee(this.g.getLigne(initColonne + 1), initColonne +1);
 			else if (this.g.getLigne(initColonne + 1) + 1 == initLigne)
 				vide[positionIndice(vide)] = new Coordonnee(this.g.getLigne(initColonne + 1), initColonne +1);
-			else if (initLigne !=5 && this.g.getLigne(initColonne + 1) + 1 == initLigne + 1) 
-				vide[positionIndice(vide)] = new Coordonnee(this.g.getLigne(initColonne + 1) + 1, initColonne +1);
+			
+			if (initLigne !=5 && (this.g.getLigne(initColonne + 1) == initLigne + 1)) 
+				vide[positionIndice(vide)] = new Coordonnee(initLigne + 1, initColonne +1);
 				
 		} else if (initColonne == 6) {
 
@@ -73,8 +74,9 @@ public class JoueurIA extends Joueur {
 				vide[positionIndice(vide)] = new Coordonnee(this.g.getLigne(initColonne - 1), initColonne -1);
 			else if (this.g.getLigne(initColonne - 1) + 1 == initLigne)
 				vide[positionIndice(vide)] = new Coordonnee(this.g.getLigne(initColonne - 1), initColonne -1);
-			else if (initLigne !=5 && this.g.getLigne(initColonne - 1) + 1 == initLigne + 1) 
-				vide[positionIndice(vide)] = new Coordonnee(this.g.getLigne(initColonne - 1) + 1, initColonne -1);
+			
+			if (initLigne !=5 && (this.g.getLigne(initColonne - 1) == initLigne + 1))
+				vide[positionIndice(vide)] = new Coordonnee(initLigne + 1, initColonne -1);
 		
 		} else {
 			if (this.g.getLigne(initColonne) + 1 == initLigne) 
@@ -84,24 +86,27 @@ public class JoueurIA extends Joueur {
 				vide[positionIndice(vide)] = new Coordonnee(this.g.getLigne(initColonne + 1), initColonne +1);
 			else if (this.g.getLigne(initColonne + 1) + 1 == initLigne) 
 				vide[positionIndice(vide)] = new Coordonnee(this.g.getLigne(initColonne + 1), initColonne +1);
-			else if (initLigne !=5 && this.g.getLigne(initColonne + 1) + 1 == initLigne + 1) 
-				vide[positionIndice(vide)] = new Coordonnee(this.g.getLigne(initColonne + 1) + 1, initColonne +1);
+			
+			if (initLigne !=5 && (this.g.getLigne(initColonne + 1) == initLigne + 1)) 
+				vide[positionIndice(vide)] = new Coordonnee(initLigne + 1, initColonne +1);
 			
 			if (this.g.getLigne(initColonne - 1) == initLigne) 
 				vide[positionIndice(vide)] = new Coordonnee(this.g.getLigne(initColonne - 1), initColonne -1);
 			else if (this.g.getLigne(initColonne - 1) + 1 == initLigne)
 				vide[positionIndice(vide)] = new Coordonnee(this.g.getLigne(initColonne - 1), initColonne -1);
-			else if (initLigne !=5 && this.g.getLigne(initColonne - 1) + 1 == initLigne + 1) 
-				vide[positionIndice(vide)] = new Coordonnee(this.g.getLigne(initColonne - 1) + 1, initColonne -1);
+			
+			if (initLigne !=5 && (this.g.getLigne(initColonne + 1) == initLigne + 1)) 
+				vide[positionIndice(vide)] = new Coordonnee(initLigne + 1, initColonne -1);
 		}
 		System.out.println("Vide : " + this.affichagetab(vide));
 		return vide;
 	}
 	
 	public Coordonnee[] concatenationVide(int indice) {
-		Coordonnee[] casesVide = new Coordonnee[42];
-		// PROBLEME DANS CETTE METHODE A CORRIGER
-		for (int i = 2; i < indice + 1; i++) {
+		Coordonnee[] casesVide = new Coordonnee[82];
+		System.out.println("indice de depart :" +indice);
+		for (int i = 1; i < indice + 1; i++) {
+			System.out.println("indice : "+ i + " coordonne : "+ this.position[i-1]);
 			Coordonnee[] intermediaire =  this.voisinVide(i);
 			System.out.println("concat-intermediaire : "+ this.affichagetab(intermediaire));
 			for (int j = 0; j < intermediaire.length; j++) {
