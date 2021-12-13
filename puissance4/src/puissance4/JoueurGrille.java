@@ -17,11 +17,23 @@ public class JoueurGrille extends Joueur {
 	@Override
 	public int choixPlacement() {//retour etat de ton jeu apres ton placement
 		sc = new Scanner(System.in);
+		boolean restart = true;
+		int colonne = 0;
 		
-	   	System.out.println("Donner la colonne dans laquelle vous voulez mettre votre jeton de 1 à 7 : ");
-	   	int colonne = sc.nextInt() - 1;
-		this.g.ajouteJeton(this.jetonJ, colonne);
+		System.out.println("Donner le numéro de colonne dans laquelle vous voulez mettre votre jeton de 1 à 7 : ");
 		
+		while (restart) {
+		   	colonne = sc.nextInt() - 1;
+		   	try {
+			   	this.g.ajouteJeton(this.jetonJ, colonne);
+		   		restart = false;
+		   	} catch (IllegalArgumentException e) {
+		   		restart = true;
+		   		System.out.println("Valeur donnée incorrect.\n"
+		   				+ "Donner le numéro de colonne dans laquelle vous voulez mettre votre jeton de 1 à 7 : ");
+		   	}
+	   	}
+	   	
 		System.out.println(this.g.toString());
 		
 		if(this.g.enHorizontale(this.g.getDernierJeton(), this.jetonJ.getCouleur()))
