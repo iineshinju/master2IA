@@ -42,11 +42,8 @@ public class Grille {
 	public void ajouteJeton(Jeton jeton, int colonne) {
 		if (colonne < 0 || colonne > 6)
 			throw new IllegalArgumentException("La colonne " + colonne +" est en dehors de la grille.");
-		int ligne = 5;
-		while (jetons[ligne][colonne] != null) {
-			ligne--;
-		}
-		if(ligne>0) {
+		int ligne = this.getLigne(colonne);
+		if(ligne>=0) {
 			jetons[ligne][colonne] = jeton;
 			dernierJeton = new Coordonnee(ligne, colonne);
 		}
