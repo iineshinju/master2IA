@@ -23,8 +23,12 @@ public class JoueurDefensif extends JoueurIA {
 	   		colonne = this.poidsColonne();
 	   	} else {
 	   		if (indice == 1) {
+	   			try {
 	   			System.out.println(this.voisinVide(indice));
 	   			voisinVideIndice = this.voisinVide(indice);
+	   			}
+	   			catch() {
+	   			}
 	   		} else if (indice > 1){
 	   			voisinVideIndice = this.concatenationVide(indice);
 	   		}
