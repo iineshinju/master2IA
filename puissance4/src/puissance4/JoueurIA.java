@@ -47,17 +47,8 @@ public class JoueurIA extends Joueur {
 		return verification == this.position.length;
 	}
 
-	public int dernierIndiceTab(Coordonnee[] tableau) {
-		int verification = 0;
-		for (int i = 0; i < tableau.length; i++) {
-			if (tableau[i] != null)
-				verification++;
-		}
-		return verification;
-	}
-
-	public Coordonnee[] voisinVide(int indice) {
-		Coordonnee initial = this.position[indice - 1];
+	public Coordonnee[] voisinVide(int indice, Coordonnee[] tab) {
+		Coordonnee initial = tab[indice - 1];
 		int initLigne = initial.getLigne();
 		int initColonne = initial.getColonne();
 		Coordonnee[] vide = new Coordonnee[21];
@@ -111,11 +102,11 @@ public class JoueurIA extends Joueur {
 		return vide;
 	}
 
-	public Coordonnee[] concatenationVide(int indice) {
+	public Coordonnee[] concatenationVide(int indice, Coordonnee[] tab) {
 		Coordonnee[] casesVide = new Coordonnee[82];
 
 		for (int i = 1; i < indice + 1; i++) {
-			Coordonnee[] intermediaire = this.voisinVide(i);
+			Coordonnee[] intermediaire = this.voisinVide(i, tab);
 			for (int j = 0; j < intermediaire.length; j++) {
 				if (intermediaire[j] != null)
 					casesVide[this.dernierIndiceTab(casesVide)] = intermediaire[j];
@@ -155,125 +146,125 @@ public class JoueurIA extends Joueur {
 		return ligneVerif >= ligneC;
 	}
 
-	public int verifVoisin(Coordonnee c) {
+	public int verifVoisin(Coordonnee c, Coordonnee[] tab) {
 		int v = 0;
-		if ((diagDecroissantHaut(c) + diagDecroissantBas(c)) >= 3)
-			v += (diagDecroissantHaut(c) + diagDecroissantBas(c)) * 100;
-		else if ((diagDecroissantHaut(c) + diagDecroissantBas(c)) == 2)
-			v += (diagDecroissantHaut(c) + diagDecroissantBas(c)) * 10;
+		if ((diagDecroissantHaut(c, tab) + diagDecroissantBas(c, tab)) >= 3)
+			v += (diagDecroissantHaut(c, tab) + diagDecroissantBas(c, tab)) * 100;
+		else if ((diagDecroissantHaut(c, tab) + diagDecroissantBas(c, tab)) == 2)
+			v += (diagDecroissantHaut(c, tab) + diagDecroissantBas(c, tab)) * 10;
 		else
-			v += (diagDecroissantHaut(c) + diagDecroissantBas(c));
-		if ((gauche(c) + droite(c)) >= 3)
-			v += (gauche(c) + droite(c)) * 100;
-		else if ((gauche(c) + droite(c)) == 2)
-			v += (gauche(c) + droite(c)) * 10;
+			v += (diagDecroissantHaut(c, tab) + diagDecroissantBas(c, tab));
+		if ((gauche(c, tab) + droite(c, tab)) >= 3)
+			v += (gauche(c, tab) + droite(c, tab)) * 100;
+		else if ((gauche(c, tab) + droite(c, tab)) == 2)
+			v += (gauche(c, tab) + droite(c, tab)) * 10;
 		else
-			v += (gauche(c) + droite(c));
-		if ((diagCroissantHaut(c) + diagCroissantBas(c)) >= 3)
-			v += (diagCroissantHaut(c) + diagCroissantBas(c)) * 100;
-		else if ((diagCroissantHaut(c) + diagCroissantBas(c)) == 2)
-			v += (diagCroissantHaut(c) + diagCroissantBas(c)) * 10;
+			v += (gauche(c, tab) + droite(c, tab));
+		if ((diagCroissantHaut(c, tab) + diagCroissantBas(c, tab)) >= 3)
+			v += (diagCroissantHaut(c, tab) + diagCroissantBas(c, tab)) * 100;
+		else if ((diagCroissantHaut(c, tab) + diagCroissantBas(c, tab)) == 2)
+			v += (diagCroissantHaut(c, tab) + diagCroissantBas(c, tab)) * 10;
 		else
-			v += (diagCroissantHaut(c) + diagCroissantBas(c));
-		if (bas(c) >= 3)
-			v += bas(c) * 100;
-		else if (bas(c) == 2)
-			v += bas(c) * 10;
+			v += (diagCroissantHaut(c, tab) + diagCroissantBas(c, tab));
+		if (bas(c, tab) >= 3)
+			v += bas(c, tab) * 100;
+		else if (bas(c, tab) == 2)
+			v += bas(c, tab) * 10;
 		else
-			v += bas(c);
+			v += bas(c, tab);
 		return v;
 
 	}
 
-	public boolean dansPosition(Coordonnee c) {
-		for (int i = 0; i < this.dernierIndiceTab(position); i++) {
-			if (position[i].equals(c))
+	public boolean dansPosition(Coordonnee c, Coordonnee[] tab) {
+		for (int i = 0; i < this.dernierIndiceTab(tab); i++) {
+			if (tab[i].equals(c))
 				return true;
 		}
 		return false;
 	}
 
-	public int diagDecroissantHaut(Coordonnee c) {
+	public int diagDecroissantHaut(Coordonnee c, Coordonnee[] tab) {
 		if ((c.getColonne() == 0) || (c.getLigne() == 0))
 			return 0;
 		Coordonnee dh = new Coordonnee(c.getLigne() - 1, c.getColonne() - 1);
 		if (this.verifVide(dh))
 			return 0;
-		else if (this.dansPosition(dh))
-			return (1 + this.diagDecroissantHaut(dh));
+		else if (this.dansPosition(dh, tab))
+			return (1 + this.diagDecroissantHaut(dh, tab));
 		return 0;
 	}
 
-	public int diagDecroissantBas(Coordonnee c) {
+	public int diagDecroissantBas(Coordonnee c, Coordonnee[] tab) {
 		if ((c.getColonne() == 6) || (c.getLigne() == 5))
 			return 0;
 		Coordonnee db = new Coordonnee(c.getLigne() + 1, c.getColonne() + 1);
 		if (this.verifVide(db))
 			return 0;
-		else if (this.dansPosition(db))
-			return (1 + this.diagDecroissantHaut(db));
+		else if (this.dansPosition(db, tab))
+			return (1 + this.diagDecroissantHaut(db, tab));
 		return 0;
 	}
 
-	public int diagCroissantHaut(Coordonnee c) {
+	public int diagCroissantHaut(Coordonnee c, Coordonnee[] tab) {
 		if ((c.getColonne() == 6) || (c.getLigne() == 0)) {
 			return 0;
 		}
 		Coordonnee dh = new Coordonnee(c.getLigne() - 1, c.getColonne() + 1);
 		if (verifVide(dh))
 			return 0;
-		else if (this.dansPosition(dh))
-			return (1 + diagCroissantHaut(dh));
+		else if (this.dansPosition(dh, tab))
+			return (1 + diagCroissantHaut(dh, tab));
 		return 0;
 	}
 
-	public int diagCroissantBas(Coordonnee c) {
+	public int diagCroissantBas(Coordonnee c, Coordonnee[] tab) {
 		if ((c.getColonne() == 0) || (c.getLigne() == 5))
 			return 0;
 		Coordonnee db = new Coordonnee(c.getLigne() + 1, c.getColonne() - 1);
 		if (verifVide(db))
 			return 0;
-		else if (this.dansPosition(db))
-			return (1 + diagCroissantBas(db));
+		else if (this.dansPosition(db, tab))
+			return (1 + diagCroissantBas(db, tab));
 		return 0;
 	}
 
-	public int gauche(Coordonnee c) {
+	public int gauche(Coordonnee c, Coordonnee[] tab) {
 		if (c.getColonne() == 0)
 			return 0;
 		else {
 			Coordonnee gauche = new Coordonnee(c.getLigne(), c.getColonne() - 1);
 			if (this.verifVide(gauche))
 				return 0;
-			else if (this.dansPosition(gauche))
-				return 1 + this.gauche(gauche);
+			else if (this.dansPosition(gauche, tab))
+				return 1 + this.gauche(gauche, tab);
 			return 0;
 		}
 
 	}
 
-	public int droite(Coordonnee c) {
+	public int droite(Coordonnee c, Coordonnee[] tab) {
 		if (c.getColonne() == 6)
 			return 0;
 		else {
 			Coordonnee droite = new Coordonnee(c.getLigne(), c.getColonne() + 1);
 			if (this.verifVide(droite))
 				return 0;
-			else if (this.dansPosition(droite))
-				return 1 + this.droite(droite);
+			else if (this.dansPosition(droite, tab))
+				return 1 + this.droite(droite, tab);
 			return 0;
 		}
 	}
 
-	public int bas(Coordonnee c) {
+	public int bas(Coordonnee c, Coordonnee[] tab) {
 		if (c.getLigne() == 5)
 			return 0;
 		else {
 			Coordonnee bas = new Coordonnee(c.getLigne() + 1, c.getColonne());
 			if (this.verifVide(bas))
 				return 0;
-			else if (this.dansPosition(bas))
-				return 1 + this.bas(bas);
+			else if (this.dansPosition(bas, tab))
+				return 1 + this.bas(bas, tab);
 			return 0;
 		}
 	}
@@ -299,22 +290,18 @@ public class JoueurIA extends Joueur {
 	   	} else {
 	   		try {
 	   		if (indice == 1) {
-	   			voisinVideIndice = this.voisinVide(indice);
+	   			voisinVideIndice = this.voisinVide(indice, this.position);
 	   		} else if (indice > 1){
-	   			voisinVideIndice = this.concatenationVide(indice);
+	   			voisinVideIndice = this.concatenationVide(indice, this.position);
 	   		} else {
 	   			colonne = this.poidsColonne();
 	   		}
-	   		} catch (ArrayIndexOutOfBoundsException e) {
-	   			
+	   		} catch (ArrayIndexOutOfBoundsException e) {	
 	   		}
 	   		boolean nonArret = true;
 	   		int i = 0;
 	   		while (nonArret) {
 		   		int randomI = (int)(Math.random()*(this.dernierIndiceTab(voisinVideIndice)));
-		   		System.out.println("positionIndice : "+this.dernierIndiceTab(this.position));
-		   		System.out.println("voisinIndice : "+this.dernierIndiceTab(voisinVideIndice));
-		   		System.out.println("randomI : " + randomI);
 		   		colonne = this.tableauNull(voisinVideIndice) ? this.poidsColonne() : voisinVideIndice[randomI].getColonne();
 		   		i++;
 		   		if (this.indiceJouable(colonne))
@@ -331,8 +318,6 @@ public class JoueurIA extends Joueur {
 		   			}
 		   			nonArret = false;
 		   		}
-		   		System.out.println("colonne : "+colonne);
-		   		System.out.println("voisinVide"+this.affichagetab(voisinVideIndice));
 	   		}
 	   	}
 		this.g.ajouteJeton(this.jetonJ, colonne);
@@ -381,7 +366,7 @@ public class JoueurIA extends Joueur {
 		Jeton j = new Jeton();
 		Jeton r = new Jeton(true);
 		JoueurGrille a = new JoueurGrille("JoueurA", r, g);
-		JoueurIA b = new JoueurIA("JoueurB", j, g);
+		JoueurIA b = new JoueurIA("JoueurB IA", j, g);
 		a.jouerAvec(b);
 	}
 
