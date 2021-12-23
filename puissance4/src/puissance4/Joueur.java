@@ -12,6 +12,7 @@ public abstract class Joueur {
 	protected Joueur adversaire;
 	private String nom = "";
 	protected Jeton jetonJ;
+	protected Coordonnee[] position = new Coordonnee[21]; // memoire des placements de nos jetons
 
 	public Joueur(String nom, Jeton jetonJ, Grille g) {
 		this.nom = nom;
@@ -26,6 +27,19 @@ public abstract class Joueur {
 
 	public String getNom() {
 		return this.nom;
+	}
+	
+	public Coordonnee[] getPosition() {
+		return this.position;
+	}
+	
+	public int dernierIndiceTab(Coordonnee[] tableau) {
+		int verification = 0;
+		for (int i = 0; i < tableau.length; i++) {
+			if (tableau[i] != null)
+				verification++;
+		}
+		return verification;
 	}
 	
 	public void jouerAvec(Joueur j) {
