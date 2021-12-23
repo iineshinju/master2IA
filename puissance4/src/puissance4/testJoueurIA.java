@@ -4,13 +4,13 @@ public class testJoueurIA {
 	
 	static Jeton j = new Jeton();
 	
-	public static boolean testPoidsColonneToutVide() {
+	public static int testPoidsColonneToutVide() {
 		Grille g = new Grille();
 		JoueurIA ia = new JoueurIA(j, g);
-		return ia.poidsColonne() == 0;
+		return ia.poidsColonne();
 	}
 	
-	public static boolean testPoidsColonneUnVide() {
+	public static int testPoidsColonneUnVide() {
 		Grille g = new Grille();
 		JoueurIA ia = new JoueurIA(j, g);
 		g.ajouteJeton(j, 1);
@@ -21,10 +21,10 @@ public class testJoueurIA {
 		g.ajouteJeton(j, 3);
 		g.ajouteJeton(j, 6);
 		g.ajouteJeton(j, 2);
-		return ia.poidsColonne() == 4;
+		return ia.poidsColonne();
 	}
 
-	public static boolean testPoidsColonne() {
+	public static int testPoidsColonne() {
 		Grille g = new Grille();
 		JoueurIA ia = new JoueurIA(j, g);
 		g.ajouteJeton(j, 1);
@@ -39,7 +39,7 @@ public class testJoueurIA {
 		g.ajouteJeton(j, 3);
 		g.ajouteJeton(j, 2);
 		g.ajouteJeton(j, 0);
-		return ia.poidsColonne() == 2;
+		return ia.poidsColonne();
 	}
 	
 	public static boolean testPositionNull() {
@@ -72,7 +72,7 @@ public class testJoueurIA {
 		g.ajouteJeton(j, 0);
 		ia.position[ia.dernierIndiceTab(ia.position)]= g.getDernierJeton();
 		Coordonnee c = new Coordonnee("B6");
-		return ia.diagDecroissantHaut(c) == 1;
+		return ia.diagDecroissantHaut(c, ia.position) == 1;
 	}
 	
 	public static boolean testDiagDecroissantBas() {
@@ -83,7 +83,7 @@ public class testJoueurIA {
 		g.ajouteJeton(j, 1);
 		ia.position[ia.dernierIndiceTab(ia.position)]= g.getDernierJeton();
 		Coordonnee c = new Coordonnee("A5");
-		return ia.diagDecroissantBas(c) == 1;
+		return ia.diagDecroissantBas(c, ia.position) == 1;
 	}
 	
 	public static boolean testDiagCroissantHaut() {
@@ -94,7 +94,7 @@ public class testJoueurIA {
 		g.ajouteJeton(j, 1);
 		ia.position[ia.dernierIndiceTab(ia.position)]= g.getDernierJeton();
 		Coordonnee c = new Coordonnee("A6");
-		return ia.diagCroissantHaut(c) == 1;
+		return ia.diagCroissantHaut(c, ia.position) == 1;
 	}
 	
 	public static boolean testDiagCroissantBas() {
@@ -105,7 +105,7 @@ public class testJoueurIA {
 		g.ajouteJeton(j, 1);
 		ia.position[ia.dernierIndiceTab(ia.position)]= g.getDernierJeton();
 		Coordonnee c = new Coordonnee("B5");
-		return ia.diagCroissantBas(c) == 1;
+		return ia.diagCroissantBas(c, ia.position) == 1;
 	}
 	
 	public static boolean testGauche() {
@@ -116,7 +116,7 @@ public class testJoueurIA {
 		g.ajouteJeton(j, 1);
 		ia.position[ia.dernierIndiceTab(ia.position)]= g.getDernierJeton();
 		Coordonnee c = new Coordonnee("C6");
-		return ia.gauche(c) == 2;
+		return ia.gauche(c, ia.position) == 2;
 	}
 	
 	public static boolean testDroite() {
@@ -127,7 +127,7 @@ public class testJoueurIA {
 		g.ajouteJeton(j, 1);
 		ia.position[ia.dernierIndiceTab(ia.position)]= g.getDernierJeton();
 		Coordonnee c = new Coordonnee("A6");
-		return ia.droite(c) == 2;
+		return ia.droite(c, ia.position) == 2;
 	}
 	
 	public static boolean testBas() {
@@ -138,7 +138,7 @@ public class testJoueurIA {
 		g.ajouteJeton(j, 0);
 		ia.position[ia.dernierIndiceTab(ia.position)]= g.getDernierJeton();
 		Coordonnee c = new Coordonnee("A4");
-		return ia.bas(c) == 2;
+		return ia.bas(c, ia.position) == 2;
 	}
 	
 	public static void main(String[] args) {
