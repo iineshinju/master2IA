@@ -23,6 +23,10 @@ public class Grille {
 		return sb.toString();
 	}
 	
+	public Jeton[][] getJetons(){
+		return this.jetons;
+	}
+	
 	public Coordonnee getDernierJeton() {
 		if (this.dernierJeton == null)
 			throw new IllegalArgumentException("Aucun jeton n'a été ajouté");
@@ -49,7 +53,7 @@ public class Grille {
 		}
 	}
 	
-	public boolean enHorizontale(Coordonnee c, boolean couleurJ) {
+	public boolean enVerticale(Coordonnee c, boolean couleurJ) {
 		int aligner = 1;
 		int col = c.getColonne();
 		int lig = c.getLigne();
@@ -57,14 +61,14 @@ public class Grille {
 		for (int i = 1; i+col < 6; i++) {
 			if (jetons[lig][col+i] != null && jetons[lig][col+i].getCouleur() == couleurJ)
 				aligner++;
-			else if (jetons[lig][col+i] != null && jetons[lig][col+i].getCouleur() != couleurJ)
+			else if ((jetons[lig][col+i] != null && jetons[lig][col+i].getCouleur() != couleurJ) || jetons[lig][col+i] == null)
 				i = 10;
 		}
 		
 		for (int j = 1; col-j >= 0; j++) {
 			if (jetons[lig][col-j] != null && jetons[lig][col-j].getCouleur() == couleurJ)
 				aligner++;
-			else if (jetons[lig][col-j] != null && jetons[lig][col-j].getCouleur() != couleurJ)
+			else if ((jetons[lig][col-j] != null && jetons[lig][col-j].getCouleur() != couleurJ) || jetons[lig][col-j] == null)
 				j = 10;
 		}
 		
@@ -73,7 +77,7 @@ public class Grille {
 		return false;
 	}
 	
-	public boolean enVerticale(Coordonnee c, boolean couleurJ) {
+	public boolean enHorizontale(Coordonnee c, boolean couleurJ) {
 		int aligner = 1;
 		int col = c.getColonne();
 		int lig = c.getLigne();
@@ -81,14 +85,14 @@ public class Grille {
 		for (int i = 1; lig-i >=0; i++) {
 			if (jetons[lig-i][col] != null && jetons[lig-i][col].getCouleur() == couleurJ)
 				aligner++;
-			else if (jetons[lig-i][col] != null && jetons[lig-i][col].getCouleur() != couleurJ)
+			else if ((jetons[lig-i][col] != null && jetons[lig-i][col].getCouleur() != couleurJ) || jetons[lig-i][col] == null)
 				i = 10;
 		}
 		
 		for (int j = 1; j+lig < 6; j++) {
 			if (jetons[lig+j][col] != null && jetons[lig+j][col].getCouleur() == couleurJ)
 				aligner++;
-			else if (jetons[lig+j][col] != null && jetons[lig+j][col].getCouleur() != couleurJ)
+			else if ((jetons[lig+j][col] != null && jetons[lig+j][col].getCouleur() != couleurJ) || jetons[lig+j][col] == null)
 				j = 10;
 		}
 		
@@ -105,14 +109,14 @@ public class Grille {
 		for (int i = 1; lig-i >=0 && col-i >=0; i++) {
 			if (jetons[lig-i][col-i] != null && jetons[lig-i][col-i].getCouleur() == couleurJ)
 				aligner++;
-			else if (jetons[lig-i][col-i] != null && jetons[lig-i][col-i].getCouleur() != couleurJ)
+			else if ((jetons[lig-i][col-i] != null && jetons[lig-i][col-i].getCouleur() != couleurJ) || jetons[lig-i][col-i] == null)
 				i = 10;
 		}
 
 		for (int j = 1; j+lig < 6 && col+j < 7; j++) {
 			if (jetons[lig+j][col+j] != null && jetons[lig+j][col+j].getCouleur() == couleurJ)
 				aligner++;
-			else if (jetons[lig+j][col+j] != null && jetons[lig+j][col+j].getCouleur() != couleurJ)
+			else if ((jetons[lig+j][col+j] != null && jetons[lig+j][col+j].getCouleur() != couleurJ) || jetons[lig+j][col+j] == null)
 				j = 10;
 		}
 
@@ -129,14 +133,14 @@ public class Grille {
 		for (int i = 1; lig-i >=0 && col+i < 7; i++) {
 			if (jetons[lig-i][col+i] != null && jetons[lig-i][col+i].getCouleur() == couleurJ)
 				aligner++;
-			else if (jetons[lig-i][col+i] != null && jetons[lig-i][col+i].getCouleur() != couleurJ)
+			else if ((jetons[lig-i][col+i] != null && jetons[lig-i][col+i].getCouleur() != couleurJ) || jetons[lig-i][col+i] == null)
 				i = 10;
 		}
 
 		for (int j = 1; j+lig < 6 && col-j >= 0; j++) {
 			if (jetons[lig+j][col-j] != null && jetons[lig+j][col-j].getCouleur() == couleurJ)
 				aligner++;
-			else if (jetons[lig+j][col-j] != null && jetons[lig+j][col-j].getCouleur() != couleurJ)
+			else if ((jetons[lig+j][col-j] != null && jetons[lig+j][col-j].getCouleur() != couleurJ) || jetons[lig+j][col-j] == null)
 				j = 10;
 		}
 
