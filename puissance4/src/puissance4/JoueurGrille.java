@@ -26,6 +26,7 @@ public class JoueurGrille extends Joueur {
 		   	colonne = sc.nextInt() - 1;
 		   	try {
 			   	this.g.ajouteJeton(this.jetonJ, colonne);
+				position[this.dernierIndiceTab(position)] = g.getDernierJeton();
 		   		restart = false;
 		   	} catch (IllegalArgumentException e) {
 		   		restart = true;
@@ -41,7 +42,7 @@ public class JoueurGrille extends Joueur {
 		   				+ "Donner un numéro de colonne valide entre 1 et 7 : ");
 		   	}
 	   	}
-	   	
+		
 		System.out.println(this.g.toString());
 		
 		if(this.g.enHorizontale(this.g.getDernierJeton(), this.jetonJ.getCouleur()))
